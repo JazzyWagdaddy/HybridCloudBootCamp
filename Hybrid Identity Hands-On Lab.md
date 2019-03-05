@@ -123,10 +123,14 @@ Close Internet Explorer.
 5.	On the Azure AD sign-in configuration screen, select the checkbox for **Continue without any verified domains** and click **Next**.
     * Since this is a temporary lab environment we are not going use a validated custom domain.
 6.	On the Ready to Configure screen click **Install**.
-7.	It may take 5-10 minutes for Azure AD Connect to complete installation. Click **Exit** when complete.
+7.	It may take 5-10 minutes for Azure AD Connect to complete installation. Read the **Confiuration Complete** screen and then click **Exit**.
+8. Minimize your RDP window.
  
 ### Validate Synchronization 
-1.	Switch to the Azure portal and examine your Azure AD Directory by clicking on the directory and choosing All users.  Note that you should see accounts sourced from Active Directory that have synchronized to Azure Active Directory (e.g. On Prem). You may need to switch directories to point to the right directory.
+1.	Switch to the Azure portal and examine your Azure AD Directory by clicking on the directory and choosing All users.   You may need to switch directories from the Default Directory to your newly created directory.
+2. Note that you should see accounts sourced from Active Directory that have synchronized to Azure Active Directory (e.g. On Prem).
+
+### Congratulations!  Your are now synchronizing Active Directory to Azure Active Directory!!
  
 
 
