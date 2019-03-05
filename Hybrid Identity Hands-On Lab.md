@@ -16,8 +16,8 @@ Install the domain controller
     * Admin Username: **yourname** *you should write this down*
     * Admin Password: **pickyourown** *you should write this down*
     * Domain name:  Enter a FQDN such as mydomainname.com and keep the name shorter than 15 characters (that’s a NetBIOS restriction)
-    * DNS Prefix: <pickyourown> (e.g. use the letter “a” and then the last four digits of your cell phone, a1234)
-5.	Scroll down, click I agree to the terms and conditions stated above and then Purchase.  Monitor the deployment by clicking on the “Deploying Template deployment” tile within the Azure Portal.
+    * DNS Prefix: *pickyourown* (e.g. use the letter “a” and then the last four digits of your cell phone, a1234)
+5.	Scroll down, click **I agree to the terms and conditions stated above** and then **Purchase**.  Monitor the deployment by clicking on the “Deploying Template deployment” tile within the Azure Portal.
     * Confirm that you don’t have any validation errors.  If you do, correct them before moving forward. 
     * If the deployment fails, examine the logs to see what the root cause is.
     * You’ll need to delete the Resource Group before you try running the template again. 
@@ -53,36 +53,36 @@ We are creating a small VM to be used later to host the Azure AD Connector servi
     * Password: *Complex.Password*
     * Use existing Resource Group: **AZDCRG**
     * Public inbound ports: **Allow selected ports**
-    * Select inbound ports: **RDP(3389)** 
+    * Select inbound ports: **RDP (3389)** 
 4.	Click **Next: Disks >**  Review the settings and click **Review + create**.
 5.	Click **Create**.  After  validation passes, you monitor deployment status. It should take less than 10 minutes to spin up the VM.
-7.	When the VM has been created, the status changes from Deploying to Running.
+7.	When the VM has been created, the status changes from **Your deployment is complete**.
  
 ## Join the ADConnect VM to the domain
-Check the DNS Setting
-1.	Connect to the **ADConnect VM** and logon as ADAdmin.
+### Check the DNS Setting
+1.	Connect to the **ADConnect VM** and logon as ADAdmin. **Microsoft Azure / Resource Groups / AZDCRG / ADConnect / Connect.**
  
 2.	If prompted, click **No** on the Network discovery blade.
 3.	Depending on which region you chose for setup, the ADConnect VM may or may not have the DNS server set to a value we need.
 4.	The DNS Server on ADCONNECT may not be set to see the domain controller (adVM), so we need to check that setting.  
-5.	Open a Command prompt and enter ipconfig /all |more.
-6.	If the DNS Server is set to 10.0.0.4, continue to step 14.
+5.	Open a **Command prompt** and enter *ipconfig /all | more*.
+6.	If the DNS Server is set to 10.0.0.4, close the Command Prompt window and continue to step 14.
 Configure DNS
-7.	Within Server Manager, click on Local Server.
-8.	Click on IPv4 address assigned by DHCP, IPv6 enabled setting for the Ethernet connection.
-9.	Right-click on the network adapter and choose Properties.
-10.	Select Internet Protocol Version 4 (TCP/IPv4) and then click Properties.
-11.	Select the radio button for Use the following DNS Server addresses: and Set the DNS server to 10.0.0.4 and click OK and then Close.
-12.	You will lose connection to the ADConnect VM, this is expected. Once you are back at the Microsoft Azure Portal, click Restart to restart the ADConnect VM.
+7.	Within **Server Manager**, click on **Local Server**.
+8.	Click on **IPv4 address assigned by DHCP, IPv6 enabled setting** for the Ethernet connection.
+9.	Right-click on the network adapter and choose **Properties**.
+10.	Select **Internet Protocol Version 4 (TCP/IPv4)** and then click **Properties**.
+11.	Select the radio button for **Use the following DNS Server addresses:** and Set the DNS server to **10.0.0.4** and click **OK** and then **Close**.
+12.	You will lose connection to the ADConnect VM, this is expected. Once you are back at the Microsoft Azure Portal, click **Restart** to restart the ADConnect VM.
 13.	Once the VM is successfully restarted, connect to the ADConnect VM and logon as ADAdmin.
-Join the Domain 
-14.	Within Server Manager, click on Local Server.
-15.	Click on WORKGROUP, then Change to rename this computer or join it to a domain.
-16.	Click the radio button for Domain, enter your fully-qualified domain name, such as mydomainname.com, and click Ok.
+### Join the Domain 
+1.	Within **Server Manager**, click on **Local Server**.
+15.	Click on **WORKGROUP**, then **Change** to rename this computer or join it to a domain.
+16.	Click the radio button for **Domain**, enter your fully-qualified domain name, such as mydomainname.com, and click **OK**.
 17.	In the Windows Security box enter the AD Domain Admin credentials you specified in the template.
-18.	Click Ok on the Welcome screen, Ok on the Restart window, Close, then Restart Now.
+18.	Click **Ok** on the Welcome screen, **Ok** on the Computer Name/Domain Changes window, **Close**, then **Restart Now**.
 
-Install Azure Active Directory
+## Install Azure Active Directory
 1.	In the Azure Portal, click the +New or +Create a resource and then select Identity, then Azure Active Directory.
 2.	Enter:
 a.	Organization name (e.g. MyDirectory) 
