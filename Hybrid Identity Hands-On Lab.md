@@ -1,8 +1,8 @@
 # Hybrid Identity Hands-On Lab
 
 ## Before you Begin
-If you are using a Microsoft Azure subscription that was provided to you by Microsoft, you are limited to a specific set of Microsoft Azure regions that you can use. Please use either the East US, South Central US, West Europe, Southeast Asia, West US 2, or West Central US locations.
-Otherwise you will receive the following error in the portal if you select an unsupported region and attempt to build anything in Microsoft Azure.
+If you are using a Microsoft Azure subscription that was provided to you by Microsoft, you are limited to a specific set of Microsoft Azure regions that you can use. Please use either the **East US, South Central US, West Europe, Southeast Asia, West US 2, or West Central US locations**.
+Otherwise you will receive an  error in the portal if you select an unsupported region and attempt to build anything in Microsoft Azure.
  
 ## Setup an IaaS Domain Controller via JSON Template
 We will setup an IaaS VM with Active Directory via a JSON template from GitHub.  Although this domain controller is the in the cloud, we’ll use it to simulate an on-prem domain controller.
@@ -34,35 +34,35 @@ Install the domain controller
 6.	Expand the tree and select the **Users Container**.
 7.	On the toolbar click the icon to create a new user in the current container.  
 8.	Create a New User with the following information:
-a.	First Name: On
-b.	Last Name: Prem	
-c.	Full Name: On Prem
-d.	User Logon Name: onprem
-9.	Click Next and set the password to Complex.Password. Uncheck User must change password at next logon, and set the Password never expires checkbox.
-10.	Click Next then Finish.
+    * First Name: **On**
+    * Last Name: **Prem**
+    * Full Name: **On Prem**
+    * User Logon Name: **onprem**
+9.	Click **Next** and set the password to *Complex.Password*. Uncheck **User must change password at next logon**, and set the **Password never expires** checkbox.
+10.	Click **Next** then **Finish**.
 11.	Minimize the RDP window.
  
-Create a virtual machine
+## Create a virtual machine
 We are creating a small VM to be used later to host the Azure AD Connector service.
-1.	Return to the Azure portal and click the New or Create a Resource button (the Plus) found on the upper left-hand corner of the Azure portal.
-2.	Select Compute from the New blade, select Windows Server 2016 Datacenter from the Compute blade.
+1.	Return to the Azure portal and click the **Create a Resource** button (the Plus) found on the upper left-hand corner of the Azure portal.
+2.	Select **Compute** then select **Windows Server 2016 Datacenter**.
 3.	Fill out the virtual machine Basics form and click Ok:
-a.	Virtual machine name: ADConnect
-b.	User name: ADAdmin
-c.	Password: Complex.Password
-d.	Use existing Resource Group: AZDCRG
-e.	Public inbound ports: Allow
-f.	Select inbound ports: RDP
-4.	Click Review + create, and when validation fails, go to the Management Tab and Create new for the diagnostics storage account. Enter a unique name for the storage account and click OK.
-5.	Click Review + create, and when validation passes, click Create.
-6.	To monitor deployment status, click the “Deploying Windows Server 2016 Datacenter” tile. The VM can be found on the Azure portal dashboard, or by selecting Virtual Machines from the left-hand menu. It should take less than 10 minutes to spin up the VM.
+    * Virtual machine name: **ADConnect**
+    * Size: Choose anything with at least 2 vCPUs and 7GB RAM such as a **DS2_v2**
+    * Username: **ADAdmin**
+    * Password: *Complex.Password*
+    * Use existing Resource Group: **AZDCRG**
+    * Public inbound ports: **Allow selected ports**
+    * Select inbound ports: **RDP(3389)** 
+4.	Click **Next: Disks >**  Review the settings and click **Review + create**.
+5.	Click **Create**.  After  validation passes, you monitor deployment status. It should take less than 10 minutes to spin up the VM.
 7.	When the VM has been created, the status changes from Deploying to Running.
  
-Join the VM to the domain
+## Join the ADConnect VM to the domain
 Check the DNS Setting
-1.	Connect to the ADConnect VM and logon as ADAdmin.
+1.	Connect to the **ADConnect VM** and logon as ADAdmin.
  
-2.	If prompted, click No on the Network discovery blade.
+2.	If prompted, click **No** on the Network discovery blade.
 3.	Depending on which region you chose for setup, the ADConnect VM may or may not have the DNS server set to a value we need.
 4.	The DNS Server on ADCONNECT may not be set to see the domain controller (adVM), so we need to check that setting.  
 5.	Open a Command prompt and enter ipconfig /all |more.
