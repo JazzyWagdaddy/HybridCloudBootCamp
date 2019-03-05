@@ -83,44 +83,49 @@ Configure DNS
 18.	Click **Ok** on the Welcome screen, **Ok** on the Computer Name/Domain Changes window, **Close**, then **Restart Now**.
 
 ## Install Azure Active Directory
-1.	In the Azure Portal, click the +New or +Create a resource and then select Identity, then Azure Active Directory.
-2.	Enter:
-a.	Organization name (e.g. MyDirectory) 
-b.	Initial domain name (e.g. your initials plus last four of your cellphone)
-Ensure validation passes as your namespace needs to be unique within the *.onmicrosoft.com namespace.  We often see students choosing a domain name that already exists.  you should write this initial domain name name down
-3.	Click Create.  It will take several minutes for the directory to be created. 
-4.	Once complete, click “Click here to manage your new directory”.
+1.	In the Azure Portal, click  **+Create a resource** and then select **Identity**, then **Azure Active Directory**.
+2.	Enter the following on the **Create directory tab**:
+    * Organization name (e.g. *MyDirectory*) 
+    * Initial domain name (e.g. your initials plus last four of your cellphone)
+        * Ensure validation passes as your namespace needs to be unique within the *.onmicrosoft.com namespace.  We often see students choosing a domain name that already exists.  
+        * _You should write this initial domain  and directory name down._
+3.	Click **Create**.  It will take several minutes for the directory to be created. 
+4.	Once complete, click **Click here to manage your new directory**.
  
-Create a Sync Account
-1.	In Azure Active Directory, under Manage choose Users and then under  All users click on +New User.
-a.	Name: AD Sync Account
-b.	User name: adsync (e.g. adsync@abc1234.onmicrosoft.com)
-c.	Directory Role: Global administrator (Click Ok)
-d.	Click on Show Password and copy the password.
+## Create a Sync Account
+We are going to create an account that AD Connect will use to perform the synchronization process.
+1.	In Azure Active Directory, under **Manage** choose **Users** and then under ** All users** click on **+New User** and enter the following:
+    * Name: **AD Sync Account**
+    * User name: **adsync** (e.g. adsync@abc1234.onmicrosoft.com)
+    * Directory Role: **Global administrator** (Click Ok)
+    * Click on **Show Password** and copy the password.
 2.	Click Create.
 3.	Open an InPrivate or Incognito browser and surf to https://portal.azure.com.
 4.	Login as you’re the AD Sync Account you just created using the temporary password.
  
-5.	Change your password to a complex password and then click Update password and sign in.
-6.	Close your private or incognito browser.
+5.	Change your password to a complex password and then click **Sign in**.
+6.	Close your inprivate or incognito browser.
  
-Sync Azure AD with Windows Server AD (AD DS)
-Install Azure Active Directory Connect
-1.	Connect to the ADConnect VM and logon as your previously created domain account (i.e. (domainname\username).  If you don’t see the VM, you must switch from the directory you just created to the default directory associated with your subscription.  Click in the upper right-hand corner of the screen to change directories.
-2.	When Server Manager opens select Local Server and turn off IE Enhanced Security Configuration.
+## Sync Azure AD with Windows Server AD (AD DS)
+### Install Azure Active Directory Connect
+1.	Connect to the ADConnect VM and logon as your previously created domain account (i.e. **domainname\username**).  If you don’t see the VM, you must switch from the directory you just created to the **Default Directory** associated with your subscription.  Click in the upper right-hand corner of the screen to change directories.
+2.	When Server Manager opens select Local Server and turn off IE Enhanced Security Configuration for Administrators and Users.
 3.	Open Internet Explorer, accept the defaults, and surf to http://go.microsoft.com/fwlink/?LinkId=615771 
-4.	Click Download, then Run when prompted.
-Configure Azure Active Directory Connect
-1.	On the Welcome to Azure AD Connect screen select I agree then Continue.
-2.	Review the screen and select Use express settings.
-3.	On the Connect to Azure AD screen enter you Azure AD Credentials … this would be the adsync account you created.  Click Next and confirm the credential are validated.
-4.	On the Connect to AD DS screen, enter the Active Directory Domain Services domain administrator credentials. This would be the account you created in the template. Click Next and confirm the credential are validated.  
-If you get an error about the current security context is not associated with an Active Directory domain or forest, you more than likely didn’t logon with a domain account but rather a local account.  Logout and login with a domain account and restart at step 1 in this section.
-5.	On the Azure AD sign-in configuration screen, select the checkbox for Continue without any verified domains and click Next.
-6.	On the Ready to Configure screen click Install.
-7.	Click Exit when complete. It may take 5-10 minutes for Azure AD Connect to complete installation.
+4.	Click **Download**, then **Run** when prompted.
+Close Internet Explorer.
+
+### Configure Azure Active Directory Connect
+1.	On the Welcome to Azure AD Connect screen select **I agree** then **Continue**.
+2.	Review the screen and select **Use express settings**.
+3.	On the Connect to Azure AD screen enter you **Azure AD Credentials**.  This would be the *adsync@yourdirectoryname.onmicrosoft.com*  account you created.  Click **Next** and confirm the credential are validated.
+4.	On the Connect to AD DS screen, enter the Active Directory Domain Services domain administrator credentials. This would be the account you created in the template. Click **Next** and confirm the credential are validated.  
+    * If you get an error about the current security context is not associated with an Active Directory domain or forest, you more than likely didn’t logon with a domain account but rather a local account.  Logout and login with a domain account and restart at step 1 in this section.
+5.	On the Azure AD sign-in configuration screen, select the checkbox for **Continue without any verified domains** and click **Next**.
+    * Since this is a temporary lab environment we are not going use a validated custom domain.
+6.	On the Ready to Configure screen click **Install**.
+7.	It may take 5-10 minutes for Azure AD Connect to complete installation. Click **Exit** when complete.
  
-Validate Synchronization 
+### Validate Synchronization 
 1.	Switch to the Azure portal and examine your Azure AD Directory by clicking on the directory and choosing All users.  Note that you should see accounts sourced from Active Directory that have synchronized to Azure Active Directory (e.g. On Prem). You may need to switch directories to point to the right directory.
  
 
