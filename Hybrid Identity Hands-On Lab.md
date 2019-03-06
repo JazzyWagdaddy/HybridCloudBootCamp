@@ -94,12 +94,12 @@ Configure DNS
  
 ## Create a Sync Account
 We are going to create an account that AD Connect will use to perform the synchronization process.
-1.	In Azure Active Directory, under **Manage** choose **Users** and then under ** All users** click on **+New User** and enter the following:
+1.	In Azure Active Directory, under **Manage** choose **Users** and then under **All users** click on **+New User** and enter the following:
     * Name: **AD Sync Account**
     * User name: **adsync** (e.g. adsync@abc1234.onmicrosoft.com)
-    * Directory Role: **Global administrator** (Click Ok)
-    * Click on **Show Password** and copy the password.
-2.	Click Create.
+    * Directory Role: **Global administrator** (Click **Ok**)
+    * Click on **Show Password** and then copy the password.
+2.	Click **Create**.
 3.	Open an InPrivate or Incognito browser and surf to https://portal.azure.com.
 4.	Login as you’re the AD Sync Account you just created using the temporary password.
  
@@ -117,13 +117,13 @@ Close Internet Explorer.
 ### Configure Azure Active Directory Connect
 1.	On the Welcome to Azure AD Connect screen select **I agree** then **Continue**.
 2.	Review the screen and select **Use express settings**.
-3.	On the Connect to Azure AD screen enter you **Azure AD Credentials**.  This would be the *adsync@yourdirectoryname.onmicrosoft.com*  account you created.  Click **Next** and confirm the credential are validated.
-4.	On the Connect to AD DS screen, enter the Active Directory Domain Services domain administrator credentials. This would be the account you created in the template. Click **Next** and confirm the credential are validated.  
-    * If you get an error about the current security context is not associated with an Active Directory domain or forest, you more than likely didn’t logon with a domain account but rather a local account.  Logout and login with a domain account and restart at step 1 in this section.
-5.	On the Azure AD sign-in configuration screen, select the checkbox for **Continue without any verified domains** and click **Next**.
+3.	On the **Connect to Azure AD** screen enter your **Azure AD Credentials**.  This would be the *adsync@yourdirectoryname.onmicrosoft.com*  account you created.  Click **Next** and then confirm the credential are validated.
+4.	On the **Connect to AD DS screen**, enter the Active Directory Domain Services domain administrator credentials. This would be the account you created in the template. Click **Next** and confirm the credential are validated.  
+    * If you get an error about the current security context is not associated with an Active Directory domain or forest, you more than likely didn’t logon with a domain account but rather a local account.  You can verify this by opening a command prompt and entering **whoami**.  Logout and login with a domain account and then restart at step 1 in this section.
+5.	On the **Azure AD sign-in configuration** screen, select the checkbox for **Continue without any verified domains** and click **Next**.
     * Since this is a temporary lab environment we are not going use a validated custom domain.
-6.	On the Ready to Configure screen click **Install**.
-7.	It may take 5-10 minutes for Azure AD Connect to complete installation. Read the **Confiuration Complete** screen and then click **Exit**.
+6.	On the **Ready to Configure** screen click **Install**.
+7.	It may take 5-10 minutes for Azure AD Connect to complete installation. Read the **Configuration Complete** screen and then click **Exit**.
 8. Minimize your RDP window.
  
 ### Validate Synchronization 
