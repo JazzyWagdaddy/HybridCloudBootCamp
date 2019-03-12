@@ -15,20 +15,37 @@ Otherwise you will receive an error in the portal if you select an unsupported r
  
  
 ## Virtual Networks
-In this lab you are going top create multiple virtual networks each with virtual machines and then test connectivity.
-### Create a virtual network
+In this lab you are going top create multiple virtual networks each with it's own virtual machine and then test connectivity across subnets and vnets.
+### Create three virtual network
 1.	Log in to the Azure portal at https://portal.azure.com and 	click on **+Create a resource**  on the upper left corner of the Azure portal.
 2.	Select **Networking**, and then select **Virtual network**.
 3.	Enter or select the following information, accept the defaults for the remaining settings, and then select **Create**:
-    * Name: **vNet01**
-    * Address Space: **10.0.1.0/24**
+    * Name: **vNet1**
+    * Address Space: **10.1.0.0/164**
     * Resource Group: *Create New* **myVNets**
     * Location: *Choose a consistent supported location*
     * Subnet Name: **subnet1**
-    * Subnet address range: **10.0.1.0/24**
+    * Subnet address range: **10.1.1.0/24**
 
-### Create virtual machines
-Create two VMs in the virtual same network: 
+Repeat the steps above for vNet2:
+* Name: **vNet2**
+* Address Space: **10.2.0.0/16**
+* Resource Group: *Create New* **myVNets**
+* Location: *Choose a consistent supported location*
+* Subnet Name: **subnet2**
+* Subnet address range: **10.2.2.0/24**
+
+Repeat the steps above for vNet3:
+* Name: **vNet3**
+* Address Space: **10.3.0.0/16**
+* Resource Group: *Create New* **myVNets**
+* Location: *Choose a consistent supported location*
+* Subnet Name: **subnet2**
+* Subnet address range: **10.3.3.0/24**
+
+ 
+### Create three virtual machines
+
 1.	Select **+ Create a resource** found on the upper, left corner of the Azure portal.
 2.	Select **Compute**, and then select **Windows Server 2016 Datacenter**.
 3.	Enter or select the following information, accept the defaults for the remaining settings:
@@ -48,23 +65,76 @@ Create two VMs in the virtual same network:
 8.	Review the items and then click **Next: Review + create .**.
 9.	Once validation passes click **Create**.
 
-#### Create two VMs in the virtual network: Create the second VM
-Complete the previous steps but name the virtual machine VM2 and use the same diagnostics storage account.
+#### Create the second VM
+Complete the previous steps but use the following information:
+* Resource Group: MyVMs
+* Name: VM2
+* Region: *Choose a consistent supported Region*
+* Size: Change to **B2ms**
+* Username: pick a username
+* Password: pick a complex password
+* Confirm Password: pick a complex password
+* Public inbound ports: Open RDP
+* Select **Next:Disks >**
+* Click **Next: Networking >**
+* Set the virtual network to vNet2 and then select **Next: Management >**
+* Under Diagnostic storage account use the previously created Diagnostics storage account and then click **Next: Guest config >**.
+* Review the items and then click **Next: Tags >**.
+* Review the items and then click **Next: Review + create >**.
+* Once validation passes click **Create**.
 
-Connect to a VM from the internet
-1.	After VM1 is created, connect to it. At the top of the Azure portal, enter myVm1. When myVm1 appears in the search results, select it. Select the Connect button.
+#### Create the third VM
+Complete the previous steps but use the following information:
+* Resource Group: MyVMs
+* Name: **VM3**
+* Region: *Choose a consistent supported Region*
+* Size: Change to **B2ms**
+* Username: pick a username
+* Password: pick a complex password
+* Confirm Password: pick a complex password
+* Public inbound ports: Open RDP
+* Select **Next:Disks >**
+* Click **Next: Networking >**
+* Set the virtual network to vNet3 and then select **Next: Management >**
+* Under Diagnostic storage account use the previously created Diagnostics storage account and then click **Next: Guest config >**.
+* Review the items and then click **Next: Tags >**.
+* Review the items and then click **Next: Review + create >**.
+* Once validation passes click **Create**.
+
+You now have three virtuals machines each in the own subnet and virtual network. Let's validate that.
+
+1. From the Azure Dashboard, select **All services**.
+2. Under **Networking**, select the following:
+    * Application gateways
+    * Network security groups
+3. Under **Management + Governance** select the following:
+    * Network Watcher
+4. Click on **Monitor** from the last hand pane.
+5. Under **Insights** select ****Network**, then under **Monitoring** choose **Topology**.
+6. User **Resource Group** select **MyVNets**.  In a moment a conceptual network diagram should be generated showing all three vNets and subnets.
+
+
+
+### Connect to a VM and test connectivity
+Before you begin this section, obtain the private and public IP addresses of VM1, VM2, and VM3.
+
+1.	After VM1 is created, connect to it. At the top of the Azure portal, enter **VM1**. When VM1 appears in the search results, select it. Select the **Connect** button.
  
-2.	After selecting the Connect button, click on Download RDP file. 
-3.	If prompted, select Connect. Enter the user name and password you specified when creating the VM. You may need to select More choices, then Use a different account, to specify the credentials you entered when you created the VM.
-4.	Select OK.
+2.	After selecting the Connect button, click on **Download RDP file**. 
+3.	If prompted, select **Connect**. Enter the user name and password you specified when creating the VM. You may need to select **More choices**, then **Use a different account**, to specify the credentials you entered when you created the VM.
+4.	Select **OK**.
 5.	Click Yes on the Networks blade.
-Communicate between VMs
-1.	From PowerShell, enter ping myvm2. Ping fails, because ping uses the Internet Control Message Protocol (ICMP), and ICMP is not allowed through the Windows firewall, by default.
-2.	To allow myVm2 to ping myVm1 in a later step, enter the following command from PowerShell, which allows ICMP inbound through the Windows firewall:
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+6.	From PowerShell, enter *ping vm2*. Ping fails, why is that? **Each virtual network is isolated from other virtual networks.** 
+7. To allow VM1 to ping other VMs in a later step, enter the following command from PowerShell, which allows ICMP inbound through the Windows firewall:
+_New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4_.
+8. Repeat these steps (connect to the VM and issue the PowerShell command) for VM2 and VM3.
+
+because ping uses the Internet Control Message Protocol (ICMP), and ICMP is not allowed through the Windows firewall, by default.
+2.	
 3.	Close the remote desktop connection to myVM1.
 4.	Complete the steps in Connect to a VM from the internet again, but connect to myVM2. From a command prompt, enter ping myvm1.
 You receive replies from myVm1, because you allowed ICMP through the Windows firewall on the myVm1 VM in a previous step. 
+
 Load Balancer
 Load balancing provides a higher level of availability and scale by spreading incoming requests across multiple virtual machines (VMs). You can use the Azure portal to create a load balancer that will load balance virtual machines. In this lab you will learn how to create network resources, back-end servers, and a load balancer at the Basic pricing tier.
 Create a Basic load balancer
