@@ -67,7 +67,7 @@ Repeat the steps above for vNet3:
 
 #### Create the second VM
 Complete the previous steps but use the following information:
-* Resource Group: MyVMs
+1.* Resource Group: MyVMs
 * Name: **VM2**
 * Region: *Choose a consistent supported Region*
 * Size: Change to **B2ms**
@@ -128,11 +128,7 @@ Before you begin this section, obtain the private and public IP addresses of VM1
 _New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4_.
 8. Repeat these steps (connect to the VM and issue the PowerShell command) for VM2 and VM3.
 
-because ping uses the Internet Control Message Protocol (ICMP), and ICMP is not allowed through the Windows firewall, by default.
-2.	
-3.	Close the remote desktop connection to myVM1.
-4.	Complete the steps in Connect to a VM from the internet again, but connect to myVM2. From a command prompt, enter ping myvm1.
-You receive replies from myVm1, because you allowed ICMP through the Windows firewall on the myVm1 VM in a previous step. 
+
 
 ### Connect virtual networks with virtual network peering using the Azure portal
 You can connect virtual networks to each other with virtual network peering. These virtual networks can be in the same region or different regions (also known as Global VNet peering). Once virtual networks are peered, resources in both virtual networks are able to communicate with each other, with the same latency and bandwidth as if the resources were in the same virtual network. 
@@ -170,6 +166,34 @@ Let's examine our network topology now that we have peering enabled.
 2. Under **Insights** select **Network**, then under **Monitoring** choose **Topology**.
 3. User **Resource Group** select **MyVNets**.  In a moment a conceptual network diagram should be generated showing all three vNets and subnets including the new peerings between vNet1 and vNet2.
 
+## Hub and Spoke Networking Challenge 
+Now that you have vNet1 and vNet2 peered, resources in each virtual network and subnet can communicate with each other.  A common networking architecture is a hub-spoke network topology where the hub is a single virtual network (VNet) in Azure that acts as a central point of connectivity to your virtual networks (VNets). The spokes are VNets that peer with the hub, and can be used to isolate workloads.
+
+Your challenge is to configure vNet2 as the hub in a hub and spoke topology.  vNet1 and vNet3 are not directly connected together.  vNet1 talks to vNet3 via vNet2 and vNet3 talks to vNet1 via vNet2.
+
+Attempt to configure this on your own, otherwise follow these instructions.  You should configure spokes to use the hub VNet gateway to communicate with remote networks. To allow gateway traffic to flow from spoke to hub, and connect to remote networks, you must:
+* Configure the VNet peering connection in the hub to allow gateway transit.
+* Configure the VNet peering connection in each spoke to use remote gateways.
+* Configure all VNet peering connections to allow forwarded traffic.
+
+### Configure vNet3
+1. In the Search box at the top of the Azure portal, begin typing **vNet3**. When vNet3 appears in the search results, select it.
+2. Select **SETTINGS** then **Peerings**, and then select **+ Add**.
+3. Enter, or select, the following information, accept the defaults for the remaining settings:
+    * Name: **vNet3-vNet2**
+    * Virtual network: **vNet2 (MyVNets)**
+    * Configure virtual network access settings: **Enabled**
+    * Configure forwarded traffic settings: **Disabled**
+    * Enable the checkbox for **Configure gateway transit settings**
+    * select **OK**
+
+Peering status - If you don't see the status, refresh your browser.  Notice the status is *Initiated*.
+
+### Configure vNet1
+1. In the Search box at the top of the Azure portal, begin typing **vNet3**. When vNet3 appears in the search results, select it.
+2. Select **SETTINGS** then **Peerings**, and then select **vNet1-vNet2**.
+3. Enable the checkbox for **Configure gateway transit settings**.
+4. Select **OK**
 
 Create virtual machines
 Create a VM in each virtual network so that you can communicate between them in a later step.
@@ -462,3 +486,8 @@ e)	Storage Accounts:  Select the storage account previously provisioned
 a)	 https://www.microsoft.com/en-US/download/details.aspx?id=4865 
 8)	Launch Network Monitor and open the capture file from your Documents folder.  Examine the contents of your packet capture session.
 
+because ping uses the Internet Control Message Protocol (ICMP), and ICMP is not allowed through the Windows firewall, by default.
+2.	
+3.	Close the remote desktop connection to myVM1.
+4.	Complete the steps in Connect to a VM from the internet again, but connect to myVM2. From a command prompt, enter ping myvm1.
+You receive replies from myVm1, because you allowed ICMP through the Windows firewall on the myVm1 VM in a previous step. 
