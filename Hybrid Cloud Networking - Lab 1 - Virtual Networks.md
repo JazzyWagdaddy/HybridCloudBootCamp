@@ -30,7 +30,7 @@ In this lab you are going top create multiple virtual networks each with it's ow
 2.	Select **Networking**, and then select **Virtual network**.
 3.	Enter or select the following information, accept the defaults for the remaining settings, and then select **Create**:
     * Name: **vNet1**
-    * Address Space: **10.1.0.0/164**
+    * Address Space: **10.1.0.0/16**
     * Resource Group: *Create New* **myVNets**
     * Location: *Choose a consistent and supported location*
     * Subnet Name: **subnet1**
