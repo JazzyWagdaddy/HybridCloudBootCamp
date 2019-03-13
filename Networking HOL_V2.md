@@ -404,115 +404,108 @@ Create a load balancer rule named HTTPRule for listening to port 80 in the front
     * **BEPool** for the name of the back-end pool
     * **LBHP**for the name of the health probe
 
-Test the load balancer
-1.	Find the public IP address for the load balancer on the Overview screen. Select All resources, and then select LBPublicIP.
+#### Test the load balancer
+1.	Find the public IP address for the load balancer on the Overview screen. Select **All resources**, and then select **LBPublicIP**.
 2.	Copy the public IP address, and then paste it into the address bar of your browser. The default page of IIS web server is displayed in the browser, noting LBVM1 or LBVM2 as you refresh your browser.
-3.	Shutdown either LBVM1 or LBVM2.  As the VM is shutting down, refresh your browser.  Once one of the VMs is down, you should only see the live VM rendering you the default website.  You may receive a service unavailable if you refresh during probe attempts. 
-Traffic Manager
-Prerequisites
-This lab requires that you have deploy two instances of a web application running in different Azure regions (East US and West). The two web application instances serve as primary and backup endpoints for Traffic Manager.
+3.	Shutdown either LBVM1 or LBVM2, whichever VM is responding most frequently.  As the VM is shutting down, refresh your browser.  Once one of the VMs is down, you should only see the live VM rendering you the default website.  You may receive a service unavailable if you refresh during probe attempts. 
+
+
+## Traffic Manager
+This lab requires that you have deploy two instances of a web application running in different supported Azure regions (East US and West US2). The two web application instances serve as primary and backup endpoints for Traffic Manager.
 
 Create East US Web App
-1)	On the top left-hand side of the screen, select Create a resource > Web > Web App > Create.
+1)	On the top left-hand side of the screen, select **Create a resource** > **Web** > **Web App** > **Create**.
 2)	In Web App, enter or select the following information and enter default settings where none are specified:
-a)	App name: <yourinitals>EastWebApp (e.g. abcEastWebApp)
-b)	Resource Group: (new) EastWebApps
-c)	Select App Service Plan:
-i)	+ Create New: EastWebApps
-ii)	App Service plan name: <yourinitals>EastAppSvcPlan
-iii)	Location: East US
-iv)	Click OK
-3)	Select Create.  A default website is created when the Web App is successfully deployed.
-Create West US Web App
-1)	On the top left-hand side of the screen, select Create a resource > Web > Web App.
-2)	In Web App, enter or select the following information and enter default settings where none are specified:
-a)	App name: <yourinitals>WestWebApp (e.g. abcEastWebApp)
-b)	Resource Group: (new) WestWebApps
-c)	Select App Service Plan:
-i)	+ Create New: 
-ii)	App Service plan name: <yourinitals>AppSvcPlan
-iii)	Location: West US
-iv)	Click OK
+    * App name: **`<yourinitals>`USWebApp** (e.g. abcUSWebApp)
+    * Resource Group: (new)  **`<yourinitals>`USWebApps**
+    * Select **App Service Plan/Location**:
+        * Create New: **USWebApps**
+        * Location: **East US**
+        * Pricing Tier: **D1 Shared**
+        * Click **OK**
 3)	Select Create.  A default website is created when the Web App is successfully deployed.
 
-Create a Traffic Manager profile
-Create a Traffic manager profile that directs user traffic based on endpoint priority.
-1)	On the top left-hand side of the screen, select Create a resource > Networking > Traffic Manager profile.
-2)	In the Create Traffic Manager profile, enter or select, the following information, accept the defaults for the remaining settings, and then select Create:
-a)	Name: <yourinitials>TM (This name needs to be unique within the trafficmanager.net zone and results in the DNS name, trafficmanager.net which is used to access your Traffic Manager profile.)
-b)	Routing method: Priority
-c)	Resource Group: EastWebApps
+Create West Europe Web App
+1)	On the top left-hand side of the screen, select **Create a resource** > **Web** > **Web App** > **Create**.
+2)	In Web App, enter or select the following information and enter default settings where none are specified:
+    * App name: **`<yourinitals>`EUWebApp** (e.g. abcEUWebApp)
+    * Resource Group: (new)  **`<yourinitals>`EUWebApps**
+    * Select **App Service Plan/Location**:
+        * Create New: **EUWebApps**
+        * Location: **West Europe**
+        * Pricing Tier: **D1 Shared**
+        * Click **OK**
+3)	Select **Create**.  A default website is created when the Web App is successfully deployed.
 
-Add Traffic Manager endpoints
+### Create a Traffic Manager profile
+Create a Traffic manager profile that directs user traffic based on endpoint priority.  Azure Traffic Manager helps reduce downtime and improve responsiveness of important applications by routing incoming traffic across multiple deployments in different regions. Built-in health checks and automatic re-routing help ensure high availability if a service fails. Use Traffic Manager with Azure services including Web Apps, Cloud Services and Virtual Machines - or combine it with on-premises services for hybrid deployments and smooth cloud migration.
+1)	On the top left-hand side of the screen, select **Create a resource** > **Networking** > **Traffic Manager profile**. You may have to type in Traffic Manager Profile.
+2)	In the Create Traffic Manager profile, enter or select, the following information, accept the defaults for the remaining settings:
+    * Click **Create**
+      Name: `<yourinitials>`TM (This name needs to be unique within the trafficmanager.net zone and results in the DNS name, trafficmanager.net which is used to access your Traffic Manager profile.)
+    * Routing method: Geographic
+    * Resource Group: `<yourinitials>`USWebApps
+    * Click **Create**
+
+### Add Traffic Manager endpoints
 Add the website in the East US as primary endpoint to route all the user traffic. Add the website in West Europe as a backup endpoint. When the primary endpoint is unavailable, traffic is automatically routed to the secondary endpoint.
-1)	In the portal’s search bar, search for the Traffic Manager profile name that you created in the preceding section and select the profile in the results that the displayed.
-2)	In Traffic Manager profile, in the Settings section, click Endpoints, and then click Add.
-3)	Enter, or select, the following information, accept the defaults for the remaining settings, and then select OK:
-a)	Type: Azure endpoint
-b)	Name: MyPrimaryEndpoint
-c)	Target resource type: App Service
-d)	Target Resource: <yourinitals>EastWebApp
-e)	Priority: 1
-4)	Enter, or select, the following information, accept the defaults for the remaining settings, and then select OK:
-a)	Type: Azure endpoint
-b)	Name: MySecondaryEndpoint
-c)	Target resource type: App Service
-d)	Target Resource: <yourinitals>WestWebApp
-e)	Priority: 2
+1)	In the portal’s search bar, search for the Traffic Manager profile name that you created in the preceding section and select the profile in the results that the displayed.  You can also go to the resource from the Alerts window.
+2)	In Traffic Manager profile, in the **Settings** section, click **Endpoints**, and then click **Add**.
+3)	Enter, or select, the following information, accept the defaults for the remaining settings, and then select **OK**:
+    * Type: Azure endpoint
+    * Name: MyPrimaryEndpoint
+    * Target resource type: App Service
+    * Target Resource: `<yourinitals>`USWebApp
+    * Geo-Mapping: **North America / Central America / Caribbean**
+4)	Enter, or select, the following information, accept the defaults for the remaining settings, and then select **OK**:
+    * Type: Azure endpoint
+    * Name: MySecondaryEndpoint
+    * Target resource type: App Service
+    * Target Resource: `<yourinitals>`EUWebApp
+    * Geo-Mapping: **Europe**
  
 
-Test Traffic Manager profile
-In this section, you first determine the domain name of your Traffic Manager profile and then view how the Traffic Manager fails over to the secondary endpoint when the primary endpoint is unavailable.
+### Test Traffic Manager profile
+In this section, you first determine the domain name of your Traffic Manager profile and then view how Traffic Manager fails over to the secondary endpoint when the primary endpoint is unavailable.
 
-Determine the DNS name
+Since we have enabled traffic management on a global versus regional perspective, we need to test access to your website from various locations around the world.
+
+
+#### Determine the DNS name
 1.	Click Overview and the Traffic Manager profile displays the DNS name of your newly created Traffic Manager profile.
-View Traffic Manager in action
-1)	In a web browser, type the DNS name of your Traffic Manager profile to view your Web App's default website. In this lab scenario, all requests are routed to the primary endpoint that is set to Priority 1.
-2)	To view Traffic Manager failover in action, disable your primary site as follows:
-a)	In the Traffic Manager Profile page, select Settings>Endpoints>MyPrimaryEndpoint.
-b)	In MyPrimaryEndpoint, select Disabled.
-c)	The primary endpoint MyPrimaryEndpoint status now shows as Disabled.
-3)	Copy the DNS name of your Traffic Manager Profile from the preceding step to successfully view the website in a web browser. When the primary endpoint is disabled, the user traffic gets routed to the secondary endpoint.
+
+#### View Traffic Manager in action
+1)	In a web browser, surf to https://www.whatsmydns.net and enter the DNS name of your Traffic Manager profile, change the record type to CNAME, and click **Search**.
+2) Notice which of your endpoints are providing services to the various global locations.
+3) In the Azure portal swith to your Traffic Manager profile and notice that all of your endpoints are **Enabled**.
+4) Click on **MyPrimaryEndpoint**, select **Disabled**, the **Save**.
+5) In the Azure portal swith to your Traffic Manager profile and notice that **MyPrimaryEndpoint** is now **Disabled**.
+6) Return to https://www.whatsmydns.net and click **Search**, noticing the changes on which endpoint(s) are now responding.
+
 
  
-Network Watcher
+## Network Watcher
 To test network communication with Network Watcher, first enable a network watcher in at least one Azure region, and then use Network Watcher's IP flow verify capability.
-Enable network watcher
-1)	In the portal, select All services. In the Filter box, enter Network Watcher. When Network Watcher appears in the results, select it.
-2)	Enable a network watcher in the region where you deployed your VMs. Select Regions, to expand it, and then select ... to the right of East US.
-3)	Select Enable Network Watcher.
+### Enable network watcher
+1)	In the portal, select **All services**. In the Filter box, enter **Network Watcher**. When Network Watcher appears in the results, select it.
+2)	Enable a network watcher in the region where you deployed your VMs. Select Regions, to expand it, and then select ... to the right of **East US**.
+3)	Select **Enable Network Watcher**.
 
-Packet Capture and examination
-1)	Under Network diagnostics tools, select Packet Capture, the Add.
-2)	Enter the following and click Ok:
-a)	Resource Group: LBGR
-b)	Target VM: LBVM1
-c)	Packet Capture Name: Packets
-d)	Capture configuration: Storage Account
-e)	Storage Accounts:  Select the storage account previously provisioned
+### Packet Capture and examination
+1)	From the left-hand pane, choose **Network Watcher**.  Under **Network diagnostic tools**, select **Packet Capture**, the **Add**.
+2)	Enter the following and click **Ok**:
+    * Resource Group: LBGR
+    * Target VM: LBVM1
+    * Packet Capture Name: Packets
+    * Capture configuration: Storage Account
+    * Storage Accounts:  Select the storage account previously provisioned
+    * Cut and paste the default values into the three configuration boxes.
+    
+    *Note that it may take several minutes for the packet capture to initialize*
 3)	Find the public IP address for the load balancer LBPublicIP.
-4)	Shutdown LBVM2 and then copy the public IP address and paste it into the address bar of your browser. The default page of IIS web server is displayed in the browser, noting LBVM1 or LBVM2 as you refresh your browser.
-5)	Stop the packet capture by returning to Network Watcher > Packet Capture > Right-Click > Stop.
-6)	If you click on the .cap file it will display the blob properties.  Download the file to your documents folder on your local computer.
-7)	Install network monitor from the following:
-a)	 https://www.microsoft.com/en-US/download/details.aspx?id=4865 
+4)	Shutdown LBVM2 and then paste the public IP address of your Load Balancer into the address bar of your browser. Hit refresh and notice the default page of IIS web server is displayed in the browser. 
+5)	Stop the packet capture by returning to **Network Watcher** > **Packet Capture** >**Right-Click** > **Stop**.
+6)	Click on the .cap file it will display the blob properties.  Download the file to your documents folder on your local computer.
+7)	Install network monitor from the following: https://www.microsoft.com/en-US/download/details.aspx?id=4865 
 8)	Launch Network Monitor and open the capture file from your Documents folder.  Examine the contents of your packet capture session.
 
-because ping uses the Internet Control Message Protocol (ICMP), and ICMP is not allowed through the Windows firewall, by default.
-2.	
-3.	Close the remote desktop connection to myVM1.
-4.	Complete the steps in Connect to a VM from the internet again, but connect to myVM2. From a command prompt, enter ping myvm1.
-You receive replies from myVm1, because you allowed ICMP through the Windows firewall on the myVm1 VM in a previous step. 
-
-
-#### Create a back-end address pool
-To distribute traffic to the VMs, a back-end address pool contains the IP addresses of the virtual NICs that are connected to the load balancer. Create the back-end address pool myBackendPool to include LBVM1 and LBVM2.
-1.	In the Azure portal select All resources on the left menu, and then select LB01 from the resource list.
-2.	Under Settings, select Backend pools, and then select Add.
-3.	On the Add a backend pool page, do the following, and then select OK:
-•	For Name, enter BackEndPool.
-•	For Associated to, from the drop-down menu, select Availability set.
-•	For Availability set, select LBAVSet.
-•	Select Add a target network IP configuration to add each virtual machine (myVM1 and myVM2) that you created to the back-end pool.
- 
-4.	Make sure that your load balancer's back-end pool setting displays both the VMs LBVM1 and LBVM2.
