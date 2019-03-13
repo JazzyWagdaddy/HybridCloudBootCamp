@@ -27,3 +27,5 @@ Peering status - If you don't see the status, refresh your browser.  Notice the 
 3. Enable the checkbox for **Configure gateway transit settings**.
 4. Select **OK**
 
+
+ 
