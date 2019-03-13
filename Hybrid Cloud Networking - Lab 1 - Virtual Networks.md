@@ -47,7 +47,7 @@ Repeat the steps above for vNet3:
 * Address Space: **10.3.0.0/16**
 * Resource Group: *Create New* **myVNets**
 * Location: *Choose a consistent and supported location*
-* Subnet Name: **subnet2**
+* Subnet Name: **subnet3**
 * Subnet address range: **10.3.3.0/24**
 
  
