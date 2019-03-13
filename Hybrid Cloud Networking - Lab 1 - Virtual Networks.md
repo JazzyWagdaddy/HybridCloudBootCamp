@@ -1,6 +1,4 @@
-# Networking Hands-On Lab
-
-
+# Lab 1 - Virtual Networks
  
 ## Before you Begin
 If you are using a Microsoft Azure subscription that was provided to you by Microsoft, you using what is called sponsored Azure and that subscription is  limited to a specific set of Microsoft Azure regions. Please consistently use one of the following locations:
@@ -30,7 +28,7 @@ In this lab you are going top create multiple virtual networks each with it's ow
 2.	Select **Networking**, and then select **Virtual network**.
 3.	Enter or select the following information, accept the defaults for the remaining settings, and then select **Create**:
     * Name: **vNet1**
-    * Address Space: **10.1.0.0/164**
+    * Address Space: **10.1.0.0/16**
     * Resource Group: *Create New* **myVNets**
     * Location: *Choose a consistent and supported location*
     * Subnet Name: **subnet1**
@@ -39,7 +37,7 @@ In this lab you are going top create multiple virtual networks each with it's ow
 Repeat the steps above for vNet2:
 * Name: **vNet2**
 * Address Space: **10.2.0.0/16**
-* Resource Group: *Create New* **myVNets**
+* Resource Group: **myVNets**
 * Location: *Choose a consistent and supported location*
 * Subnet Name: **subnet2**
 * Subnet address range: **10.2.2.0/24**
@@ -47,9 +45,9 @@ Repeat the steps above for vNet2:
 Repeat the steps above for vNet3:
 * Name: **vNet3**
 * Address Space: **10.3.0.0/16**
-* Resource Group: *Create New* **myVNets**
+* Resource Group: **myVNets**
 * Location: *Choose a consistent and supported location*
-* Subnet Name: **subnet2**
+* Subnet Name: **subnet3**
 * Subnet address range: **10.3.3.0/24**
 
  
