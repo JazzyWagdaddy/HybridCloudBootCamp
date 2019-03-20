@@ -133,6 +133,7 @@ Let's make sure that your data got migrated and looks right.  We're going to con
     * Authentication type: SQL Server Authentication
     * In the Username box, type the name of a valid SQL login from the previous steps.
     * In the Password box, type the password of the login from the previous steps.
-4. Click on **New Query** and enter the following:
-    * SELECT TOP (1000) [zip] FROM [dbo].[sampledata]
+4. Change your available database to *MySampleDatabase*.
+5. Click on **New Query** and enter the following:
+    * select TOP (1000) [zip] FROM MySampleDatabase.dbo.sampledata
 5. Click **Execute**.  This query will search the Azure SQL database and display the first 1000 zip codes.
