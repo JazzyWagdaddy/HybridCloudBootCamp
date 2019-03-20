@@ -101,7 +101,7 @@ Before you create a migration project in DMA, be sure that you have already prov
     * Password: *Complex.Password*
     * Confirm Password: *Complex.Password*
     * Click **Select**
-
+4. Select **Create**.
 
 
 
