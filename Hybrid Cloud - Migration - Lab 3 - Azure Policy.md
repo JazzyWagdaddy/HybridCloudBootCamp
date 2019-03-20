@@ -26,9 +26,9 @@ With an initiative definition, you can group several policy definitions to achie
 1. Select **Definitions** under Authoring in the left side of the Azure Policy page.
 2. Select **+ Initiative Definition** at the top of the page to open the Initiative definition page.
 3. Enter **Tag Enforcement** as the Name and Description of the initiative.
-4. For Category, choose *Create new*, and enter **MyFirst Initiative**.
+4. For Category, choose *Create new*, and enter **MyFirstInitiative**.
 5. Under **AVAILABLE DEFINITIONS** search for *tag* and then select **Enforce tag and its value**, the **+Add**.
-6. **Set value** of `Tag Name` to **environment**.
+6. **Set value** of `Tag Name` to **department**.
 7. **Set value** of `Tag Value` to **lab**.
 8. Click **Save**.
 
