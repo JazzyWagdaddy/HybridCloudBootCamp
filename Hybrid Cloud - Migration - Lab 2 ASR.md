@@ -1,7 +1,9 @@
 # Azure Migration  Lab
 ## Azure Site Recovery for Migration  
  
-In this lab you will create a VM in Azure to simulate a source VM running in either VMware or Hyper-V onthe ground.  We will then replicate (aka migrate) the VM to Azure.
+In this lab you will create a VM in Azure to simulate a source VM running in either VMware or Hyper-V on the ground.  We will then replicate (aka migrate) the VM to Azure.
+
+Please note that using this approach represents the `the fastest way` to migrate a VM to Azure and should be seen as not typical of a usual, customary migration to Azure. 
 
 ### Create a Virtual Machine
 We need to create a source to migrate.  This would normally be a physical or virtual machine on the ground, but for lab purposes we are going to perform and Azure to Azure migration.  Conceptually the process is identical and less time consuming since we leverage the power of Azure compute, network, and storage resources.
@@ -45,7 +47,13 @@ Select what you want to replicate, and where you want to replicate to.
 #### Track Replication
 1. Once Azure has built the core components replication will begin.  On the alert button (the bell) click on **Enabling replication for 1 vm(s)**.
 2.	Notice the steps as they occur in real time.  The longest step in the process is going to be **Enable replication**.  Select that item and observe the series of steps taking place. IR, or Initial Replication, the time it takes the VM to be copied from source to target.  Notice the Status of IR.  
-2.	Since it may take 30 minutes to replicate the VM, now may be an appropriate time to take a break.
-3.	You can check percentage complete or replication by **Virtual Machines -> SourceVM -> Disaster Recovery**.  You may notice status sits at 0% synchronized for some time and then report upwards of 87% complete on next refresh.
+2.	Since it may take several hours to replicate the VM, now may be an appropriate time to take a break or come back to the lab at a later time.
+3.	You can check percentage complete of replication by **Virtual Machines > SourceVM > Operations > Disaster Recovery**.  You may notice status sits at 0% synchronized for some time and then report upwards of 87% complete on next refresh.
+
+## Make it Real
+In production, once your VM is replicated to Azure, your next step would be to establish the cut-over process from ground to cloud resources. There are several ways to accomplish this:
+
+1. Enable SQL replication between on-prem SQL and the Azure SQL database allowing users to read/write to/from on-prem SQL server and then use SQL replication to keep the data in sync. Once you're confident about data consistency, you can move on to step 2.
+2. Update your clients to point to Azure SQL.  There are too many variations to discuss one single approach, however common approaches include updating connection string, putting a load balalnce in front of the SQL servers, and many others.
  
 
