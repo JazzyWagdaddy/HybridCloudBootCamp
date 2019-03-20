@@ -17,8 +17,7 @@ We need to create a source to migrate.  This would normally be a physical or vir
     * Username: pick a username and write it down
     * Password: `Complex.Password` and write it down
     * Confirm Password:  `Complex.Password` and write it down
-    * Public inbound ports:  Open RDP
-    * Select **Next: Disks >**
+    * Public inbound ports:  Open **RDP**
 4.	Click **Review + create**.
 5.	Once validation passes click **Create**.
 
@@ -26,9 +25,8 @@ We need to create a source to migrate.  This would normally be a physical or vir
 1. Click **Create a resource > Management Tools > Backup and Site Recovery(OMS)** and enter **MyVault** as the Name and **Migration** as the Resource Group.  Click **Create**.
 
 ### Select a replication goal
-Select what you want to replicate, and where you want to replicate to.
 1. In the search bar type in **MyVault** and select it.
-2. In the **Getting Started** Menu, click **Site Recovery** > **Prepare Infrastructure** . In Protection goal, select what you want to migrate. 
+2. In the **Getting Started** Menu, click **Site Recovery** > **Prepare Infrastructure** . In **Protection goal**, set the following: 
     * Where are your machines located?: **Azure** 
     * Where do you want to replicate your machines to? **To Azure**
     * Click **OK**, and then **OK** again on the **Prepare Infrastructure** tab.
@@ -38,7 +36,7 @@ Select what you want to replicate, and where you want to replicate to.
 2.	In **Operations**, click **Disaster recovery**.
 3.	In **Configure disaster recovery** > **Target region** select the target region to which you'll replicate.
 4.	Review the  settings and click **Next: Advanced settings**.
-5. This is configuration blade where you would specify your target Subscription, Resource Group, Virtual Network, and your HA configuration.  For lab purposes we'll use the defaults and click **Next: Review + Start Replication**.
+5. This is the configuration blade where you would specify your target Subscription, Resource Group, Virtual Network, and your HA configuration.  For lab purposes we'll use the defaults and click **Next: Review + Start Replication**.
 6. Review the settings and click **Start replication**. This starts a job to enable replication for the VM.
 7.	You may notice that Vaildating takes a few moments to process.  The fabric is ensuring that resources in your target region can be created and there’s no conflicts.
 8. You can click on the **deployment progress** in your alerts window to monitor status.
