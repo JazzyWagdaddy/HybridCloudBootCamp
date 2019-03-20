@@ -6,7 +6,7 @@ In this lab you will create a VM in Azure to simulate a source VM running in eit
 Please note that using this approach represents `the fastest way` to migrate a VM to Azure and should not be seen as the usual, customary amount of time it takes to perform a migration to Azure. 
 
 ### Create a Virtual Machine
-We need to create a source to migrate.  This would normally be a physical or virtual machine on the ground, but for lab purposes we are going to perform and Azure to Azure migration.  Conceptually the process is identical and less time consuming since we leverage the power of Azure compute, network, and storage resources.
+We need to create a source to migrate.  This would normally be a physical or virtual machine on the ground, but for lab purposes we are going to perform an Azure to Azure migration.  Conceptually the process is identical and less time consuming since we leverage the power of Azure compute, network, and storage resources.
 1.	Select **+ Create a resource** found on the upper left corner of the Azure portal.
 2.	Select **Compute**, and then select **Windows Server 2016 Datacenter**.
 3.	Enter or select the following information, accept the defaults for the remaining settings:
@@ -14,9 +14,9 @@ We need to create a source to migrate.  This would normally be a physical or vir
     * Virtual Machine Name: SourceVM
     * Region: East US
     * Size: Standard **B2ms** 
-    * Username: pick a username
-    * Password: *Complex.Password* and write it down
-    * Confirm Password:  *Complex.Password* and write it down
+    * Username: pick a username and write it down
+    * Password: `Complex.Password` and write it down
+    * Confirm Password:  `Complex.Password` and write it down
     * Public inbound ports:  Open RDP
     * Select **Next: Disks >**
 4.	Click **Review + create**.
