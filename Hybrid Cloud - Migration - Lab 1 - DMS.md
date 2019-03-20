@@ -10,9 +10,9 @@ In this lab you are going to create an IaaS VM with SQL as a source environment,
 4. Select the **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 image** and click **Create**.
 5. Enter the following and then click **OK**.
     * Name: **SQLVM**
-    * Username: *pick one*
-    * Password: *Complex.Password*
-    * Confirm Password: *Complex.Password*
+    * Username: `pick one` *and write it down*
+    * Password: `Complex.Password`
+    * Confirm Password: `Complex.Password`
     * Resource Group: *create new* **SQLMIG**
 6. Choose **D2S_V3** as the size and click **Select**.
 7. On the **Configure optional features** blade select **RDP** under **Select public inbound ports** and click **OK**.
@@ -36,25 +36,25 @@ Before you can complete this section, you will need to map a drive to an Azure F
 2. Key in (cut and paste) the following and hit enter:
     * *net use Z: \\\wagsazurefiles.file.core.windows.net\sampledata /u:AZURE\wagsazurefiles tCfYh37xGNjIc0czqfTW9+kUHIIhlxRUPh9h4YtD/hh7FiFPn1v32RH7uV0a83E6nAa6kkVU6d+nAAeoBItpJg==*
 3. Once Z: is mapped change to the Z: drive.
-4. Confirm that you can see a file named sampledata.xlsx
+4. Confirm that you can see a file named sampledata.txt
 
 
 ### Connect to SQL
 1. Back on the desktop click the **Start Button**,  under the letter "M" choose **Microsoft SQL Server Management Studio** under **Microsoft SQL Server Tools 17**.
-3. In the **Connect to Server** or **Connect to Database Engine** dialog box, edit the Server name value. Enter your VM's public IP address. Then add a comma, and add the custom port, 1401, that we specified when you configured the new VM. For example, 111.222.333.444,1401.
+3. In the **Connect to Server** or **Connect to Database Engine** dialog box, edit the Server name value. Enter your VM's name.
 4. In the Authentication box, select **SQL Server Authentication**.
-5. In the Login box, type the name of a valid SQL login from step 5 in the previous section.
-6. In the Password box, type the password of the login from step 5 in the previous section.
+5. In the Login box, type the name of a valid SQL login from  the previous section.
+6. In the Password box, type the password of the login from  the previous section.
 7. Click **Connect**.
 
 ### Create a new Database and Import Data
-1. Under **SQLVM**, right-click Databases then New Database ...
+1. Under **SQLVM**, right-click **Databases** then **New Database ...**
 2. Enter **SampleData** as the Database name and click **OK**.
 3. Once the database is created, right-click **SampleData**, then **Tasks**, then **Import Flat File**
 4. On the Introduction screen click **Next**.
 5. On the **Specify Input File** screen select click **Browse**, then select  the Z: Drive, then **sampledata.txt**, then click **Open**.  Click **Next**.
-6. Review the information on the Preview Data screen and click **Next**.
-7. On the Modify Columns screen set *zip* as the Primary Key, enable **Allow Nulls** on all columns, and then click **Next**.
+6. Review the information on the **Preview Data screen** and click **Next**.
+7. On the **Modify Columns screen** set *zip* as the Primary Key, enable **Allow Nulls** on all columns, and then click **Next**.
 8. Click **Finish** on the Summary screen.
 9. Click **Close** on the Results screen
 
@@ -66,15 +66,15 @@ Before you can complete this section, you will need to map a drive to an Azure F
 Before you can migrate data from an on-premises SQL Server instance to a single database or pooled database in Azure SQL Database, you need to assess the SQL Server database for any blocking issues that might prevent migration. 
 
 1. In DMA, select the  (+) icon, and then select  **Assessment** as the project type.
-2 Specify **SampleDataAssessment** as the project name.
-3.  in the Source server type text box, select **SQL Server**, and in the Target server type text box, select **Azure SQL Database**. Sselect **Create** to create the project.
+2. Specify **SampleDataAssessment** as the project name.
+3.  in the Source server type text box, select **SQL Server**, and in the Target server type text box, select **Azure SQL Database**. Select **Create** to create the project.
 4.  Select **Next** on the Options screen.
 5. On the Select sources screen, enter the following and then select **Connect**:
-    * Server name: Enter your VM's public IP address. Then add a comma, and add the custom port, 1401, that we specified when you configured the new VM. For example, 111.222.333.444,1401.
+    * Server name: Enter your VM's server name.
     * Uncheck **Encrypt connection** under **Connection properties**.  Under normal circumstances we would use this option but we did not configure certificates on the source SQL server.
-    * Authentication type: SQL Server Authentication
-    * In the Username box, type the name of a valid SQL login from the previous steps.
-    * In the Password box, type the password of the login from the previous steps.
+    * Authentication type: **SQL Server Authentication**
+    * In the **Username** box, type the name of a valid SQL login from the previous steps.
+    * In the **Password** box, type the password of the login from the previous steps.
     *  Click **Connect**.
 6. Select **SampleData** and the click **Add**.
 7. Select **Begin Assessment**.
@@ -86,19 +86,19 @@ Before you create a migration project in DMA, be sure that you have already prov
 
 1. Select **Create a resource** in the upper left-hand corner of the Azure portal.
 2. Select **Databases** and then select **SQL Database**.
-3. In the Create SQL Database form, type or select the following values: 
+3. In the **Create SQL Database form**, type or select the following values: 
     * Resource group: Select *Create new*, type **MySQLDBs**. 
     * Database name: Enter **mySampleDatabase**.
     * Server:  
         * Select *Create new*, type *yourinitials*+*todayshortdate*. Example: `abc032019`
         *  Server admin login: *pick one* and write it down
-        * Password: *Complex.Password*
-        * Confirm Password: *Complex.Password*
+        * Password: `Complex.Password`
+        * Confirm Password: `Complex.Password`
         * Click **Select**
     * Under **Compute + storage** click *Configure database*, choose **Basic**, and then click **Apply**.
 4. Select **Review + Create** and the **Create**.
 5. Once you database server is created, click on the server in the deployment tab.
-6. Click on MySampleDatabase and copy the URL to the database server.
+6. Click on **MySampleDatabase** and copy the URL to the database server.
 
 
 
