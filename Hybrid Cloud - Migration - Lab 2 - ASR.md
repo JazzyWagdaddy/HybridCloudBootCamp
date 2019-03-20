@@ -29,7 +29,7 @@ We need to create a source to migrate.  This would normally be a physical or vir
 2. In the **Getting Started** Menu, click **Site Recovery** > **Prepare Infrastructure** . In **Protection goal**, set the following: 
     * Where are your machines located?: **Azure** 
     * Where do you want to replicate your machines to? **To Azure**
-    * Click **OK**, and then **OK** again on the **Prepare Infrastructure** tab.
+    * Click **OK**, and then **OK** again on the **Prepare Infrastructure** tab. 
 
 #### Enable replication
 1.	In the Azure portal, click **Virtual machines**, and select the **SourceVM**. 

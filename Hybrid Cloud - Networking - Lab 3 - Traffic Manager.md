@@ -23,7 +23,7 @@ Create West Europe Web App
         * Location: **West Europe**
         * Pricing Tier: **D1 Shared**
         * Click **OK**
-3)	Select **Create**.  A default website is created when the Web App is successfully deployed.
+3)	Select **Create**.  A default website is created when the Web App is successfully deployed. 
 
 ### Create a Traffic Manager profile
 Create a Traffic manager profile that directs user traffic based on endpoint priority.  Azure Traffic Manager helps reduce downtime and improve responsiveness of important applications by routing incoming traffic across multiple deployments in different regions. Built-in health checks and automatic re-routing help ensure high availability if a service fails. Use Traffic Manager with Azure services including Web Apps, Cloud Services and Virtual Machines - or combine it with on-premises services for hybrid deployments and smooth cloud migration.

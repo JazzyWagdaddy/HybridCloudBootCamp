@@ -32,7 +32,7 @@ In this lab you are going top create multiple virtual networks each with it's ow
     * Resource Group: *Create New* **myVNets**
     * Location: *Choose a consistent and supported location*
     * Subnet Name: **subnet1**
-    * Subnet address range: **10.1.1.0/24**
+    * Subnet address range: **10.1.1.0/24** 
 
 Repeat the steps above for vNet2:
 * Name: **vNet2**

@@ -30,7 +30,7 @@ In this lab you are going to create an IaaS VM with SQL as a source environment,
 4. Select **OK**.
 5. Once the desktop renders, click **No** on the Networks blade.
 
-### Map a drive to an Azure Files Share
+### Map a drive to an Azure Files Share 
 Before you can complete this section, you will need to map a drive to an Azure File Share to obtain sample data.
 1. Open a command prompt.
 2. Key in (cut and paste) the following and hit enter:

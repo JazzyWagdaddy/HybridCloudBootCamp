@@ -26,7 +26,7 @@ Install the domain controller
 
 ## Connect to the Domain Controller and create a user account
 1.	Connect to the adVM virtual machine and logon with your domain account by selecting **Microsoft Azure / Resource Groups / AZDCRG / adVM / Connect**.  
- 
+  
 2.	Click on **Download RDP File**.
 3.	Logon with the fully qualified credentials you wrote down earlier (e.g. yourname@yourdomain.com).  You may have to choose __More Choices__ then **Use a different account** to enter your new set of credentials.
 4.	If prompted, click **No** on the Network Discovery blade.
