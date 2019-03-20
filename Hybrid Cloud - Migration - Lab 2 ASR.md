@@ -1,4 +1,4 @@
-# Azure Migration  Lab
+# Azure Migration Lab
 ## Azure Site Recovery for Migration  
  
 In this lab you will create a VM in Azure to simulate a source VM running in either VMware or Hyper-V on the ground.  We will then replicate (aka migrate) the VM to Azure.
