@@ -5,8 +5,8 @@ In this lab you are going to create an IaaS VM with SQL as a source environment,
 
 ### Create a SQL Server VM image
 1. Log in to the Azure portal using your account.
-2. On the Azure portal, click **Create a resource**.
-3. In the search field, type **SQL Server 2017 Developer on Windows Server 2016**, and press **ENTER**.
+2. On the Azure portal, click **+Create a resource**.
+3. In the search field, type **SQL Server 2017 Developer on Windows Server 2016** and press **ENTER**.
 4. Select the **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 image** and click **Create**.
 5. Enter the following and then click **OK**.
     * Name: **SQLVM**
@@ -14,14 +14,14 @@ In this lab you are going to create an IaaS VM with SQL as a source environment,
     * Password: `Complex.Password`
     * Confirm Password: `Complex.Password`
     * Resource Group: *create new* **SQLMIG**
-6. Choose **D2S_V3** as the size and click **Select**.
-7. On the **Configure optional features** blade select **RDP** under **Select public inbound ports** and click **OK**.
+6. On the **Choose a size**  blade select **D2S_V3** and then click **Select**.
+7. On the **Settings** blade select **RDP** under **Select public inbound ports** and click **OK**.
 8. On the **Configure SQL Server settings** blade complete the following:
     * In the SQL connectivity drop-down, select **Public (Internet)**. This allows SQL Server connections over the internet.
     * Change the Port to **1401** to avoid using a well-known port name in the public scenario.
-    * Under SQL Authentication, click **Enable**. The SQL Login is set to the same user name and password that you configured for the VM.
+    * Under **SQL Authentication**, click **Enable**. The SQL Login is set to the same user name and password that you configured for the VM.
     * Click **OK** to complete the configuration of the SQL Server VM.
-9. Click **Create** to build your VM.  Note that it may take 10-15 minutes to build out your VM 
+9. Once validation completes, click **Create** to build your VM.  Note that it may take 10-15 minutes to build out your VM 
 
 ### Connect to VM 
 1. At the top of the Azure portal, enter **SQLVM**. When **SQLVM** appears in the search results, select it. Select the **Connect** button.
