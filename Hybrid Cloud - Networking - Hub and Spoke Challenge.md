@@ -6,4 +6,5 @@ Your challenge is to configure vNet2 as the hub in a hub and spoke topology.  vN
 Attempt to configure this on your own, otherwise follow these instructions.  You should configure spokes to use the hub VNet gateway to communicate with remote networks. To allow gateway traffic to flow from spoke to hub, and connect to remote networks, you must:
 * Configure the VNet peering connection in the hub to allow gateway transit.
 * Configure the VNet peering connection in each spoke to use remote gateways.
-* Configure all VNet peering connections to allow forwarded traffic. 
+* Configure all VNet peering connections to allow forwarded traffic.  
+ 

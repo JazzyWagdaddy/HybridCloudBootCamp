@@ -129,7 +129,7 @@ Create a load balancer rule named HTTPRule for listening to port 80 in the front
     * **80** for the port number
     * **80** for the back-end port
     * **BEPool** for the name of the back-end pool
-    * **LBHP**for the name of the health probe
+    * **LBHP**for the name of the health probe 
 
 #### Test the load balancer
 1.	Find the public IP address for the load balancer on the Overview screen. Select **All resources**, and then select **LBPublicIP**.
