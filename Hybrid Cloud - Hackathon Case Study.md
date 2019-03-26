@@ -55,4 +55,7 @@ For this exercise a  Conceptual architecture is a structural design that contain
 
 You will present your solution design with a goal of getting approval from the customer to build the solution in a Proof of Concept.
 
+## Azure Hackathon Diagram
+Here's a diagram of the existing Contoso and Small Beans  architecture.
+
 ![Azure Hackathon Diagram](https://github.com/JazzyWagdaddy/HybridCloudBootCamp/blob/master/AzureHackathon.png)
