@@ -54,3 +54,5 @@ As the Cloud Solution Architect assigned to the deal you are tasked to develop a
 For this exercise a  Conceptual architecture is a structural design that contains no implementation details. Logical architecture gives as much detail as possible providing detailed specifications.
 
 You will present your solution design with a goal of getting approval from the customer to build the solution in a Proof of Concept.
+
+![Azure Hackathon Diagram](https://github.com/JazzyWagdaddy/HybridCloudBootCamp/blob/master/AzureHackathon.png)
