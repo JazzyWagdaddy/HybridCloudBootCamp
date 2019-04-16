@@ -10,16 +10,14 @@ Please note that using this approach represents `the fastest way` to migrate a V
 
 This script creates an Azure Virtual Machine running Windows Server 2016, and then uses the Azure Virtual Machine DSC Extension to install IIS. After running the script, you can access the default IIS website on the public IP address of the virtual machine.
 
-This lab requires Azure PowerShell.
-
 1. This lab requires Azure PowerShell.  If you need to install Azure PowerShell, see [Install Azure PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps).
 
-1. Open PowerShell and Run `Connect-AzAccount` to create a logon to your Azure subscription.
+1. Open PowerShell and Run `Connect-AzAccount` to logon to your Azure subscription.
 2. Open a command prompt and map the z: to an Azure files share:
 
 `net use Z: \\wagsazurefiles.file.core.windows.net\buildiis /persistent:Yes`
 
-*Note that if the drive letter Z: is already used on your local computer feel free to change I: to any available drive letter.*
+*Note that if the drive letter Z: is already used on your local computer feel free to use any available drive letter.*
 
 3. Copy the build-iis-vm.ps1 to your local computer.  Feel free to open up the PowerShell ISE and examine the script.
 
@@ -29,7 +27,7 @@ This lab requires Azure PowerShell.
 
 `.\Build-IIS-VM.ps1`
 
-5. Enter the username and password for the IIS VM:
+5. When prompted enter the username and password for the IIS VM:
     * Username:  pick a username and notate the credentials
     * Password: Enter `Complex.Password` and notate the credentials 
 6. Observe the build process via PowerShell.
@@ -37,12 +35,13 @@ This lab requires Azure PowerShell.
 8. Open a web browser and surf to the public IP address just make sure things are working.
 
 ## Task 2 - Create target network resource
+We could have ASR automatically create the target network resources (i.e. vNeta and subnets) but in a more realistic scenario you'd want to pre-create these resources and place your migrated VMs in soecific networks. 
 1. Click on Virtual networks then **+Add**
 2. 	Enter or select the following information, accept the defaults for the remaining settings, and then select **Create**:
     * Name: **MigrationvNet**
     * Address Space: **10.10.0.0/16**
     * Resource Group: *Create New* **MigrationvNets**
-    * Location: **Central US****
+    * Location: **Central US**
     * Subnet Name: **migsub**
     * Subnet address range: **10.10.10.0/24** 
 
