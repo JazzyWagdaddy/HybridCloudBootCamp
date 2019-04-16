@@ -14,6 +14,7 @@ This script creates an Azure Virtual Machine running Windows Server 2016, and th
 
 1. Open PowerShell and Run `Connect-AzAccount` to logon to your Azure subscription and then execute the following command within PowerShell:
 
+Test-NetConnection -ComputerName wagsazurefiles.file.core.windows.net -Port 445
 
 Invoke-Expression -Command "cmdkey /add:wagsazurefiles.file.core.windows.net /user:Azure\wagsazurefiles /pass:tCfYh37xGNjIc0czqfTW9+kUHIIhlxRUPh9h4YtD/hh7FiFPn1v32RH7uV0a83E6nAa6kkVU6d+nAAeoBItpJg=="
 
