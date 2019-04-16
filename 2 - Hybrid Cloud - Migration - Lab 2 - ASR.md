@@ -97,3 +97,17 @@ If you don’t delete the failover VM, the VM will continue to run and increase 
 
  1.  Once **Test Failover** is complete, click on **Failover**.
  2. Under **Recovery Point** enure that **(low RTO)** is selected and click **OK**. Note the checkbox to shut down the source VM before failover (migration). 
+ Under alerts click the link for **Starting failover** and monitor the failover (migration).
+ 3. Once failover is complete, click on **Virtual Machines** in the Azure Portal and notice that you have two IIS VMs; one stopped (deallocated) in the East US and then another VM in the Central US that's running.
+
+ ## Task 9 - Make your migrated VM accessible
+ When you migrate a VM a public IP address is not added by default and the Virtual Network does not have any Network Security Group rules.  We need to add all of these.
+
+ For real production migrations Microsoft recommends that you add these steps to what is called a recovery plan so that they are automatically built and added as the VM is migrated.
+
+ Please refer to the following articles for detailed steps:
+ 
+ [Set up IP addressing to connect to Azure VMs after failover](https://docs.microsoft.com/en-us/azure/site-recovery/concepts-on-premises-to-azure-networking)
+ 
+ [Add Public IP and NSG to ARM VMs during Test Failover of an ASR Recovery Plan](https://gallery.technet.microsoft.com/scriptcenter/Add-Public-IP-and-NSG-to-a6bb8fee)
+
