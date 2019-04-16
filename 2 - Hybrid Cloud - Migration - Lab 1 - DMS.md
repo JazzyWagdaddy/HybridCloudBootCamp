@@ -98,16 +98,16 @@ Before you create a migration project in DMA, be sure that you have already prov
     * Under **Compute + storage** click *Configure database*, choose **Basic**, and then click **Apply**.
 4. Select **Review + Create** and the **Create**.
 5. Once you database server is created, click on the server in the deployment tab.
-6. Click on **MySampleDatabase** and copy the URL to the database server.
+6. In the Azure Portal, click on **MySampleDatabase** and copy the FQDN URL to the database server, such as abc1234.database.windows.net.
 
 
 
 ## Task 9 - Migrate the sample schema
 After you're comfortable with the assessment and satisfied that the selected database is a viable candidate for migration to a single database or pooled database in Azure SQL Database, use DMA to migrate the schema to Azure SQL Database.
 
-1. In the Data Migration Assistant, select the New (+) icon, and then under Project type, select Migration.
+1. In the Data Migration Assistant, select the **New (+) **icon, and then under Project type, select **Migration**.
 2. Specify **SQLMIG** as the project name, in the Source server type text box, select **SQL Server**, and then in the Target server type text box, select **Azure SQL Database**.  Click **Create**.
-3. In DMA, specify the source connection details for your SQL Server and select Connect.
+3. In DMA, specify the source connection details for your SQL Server and select Connect.  This is the FQDN name you copied in Task 9.
 4.  The SampleData database should be listed.  Uncheck **Assess database before migration?** and click Next.
 5. On the Select Target tab, enter the floowing and click Next:
     * Server name: Enter your (Azure) SQL Server name. 
