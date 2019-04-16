@@ -35,7 +35,7 @@ This script creates an Azure Virtual Machine running Windows Server 2016, and th
 8. Open a web browser and surf to the public IP address just make sure things are working.
 
 ## Task 2 - Create target network resource
-We could have ASR automatically create the target network resources (i.e. vNeta and subnets) but in a more realistic scenario you'd want to pre-create these resources and place your migrated VMs in soecific networks. 
+We could have ASR automatically create the target network resources (i.e. Virtual networks and subnets) but in a more realistic scenario you'd want to pre-create these resources and place your migrated VMs in soecific networks. 
 1. Click on Virtual networks then **+Add**
 2. 	Enter or select the following information, accept the defaults for the remaining settings, and then select **Create**:
     * Name: **MigrationvNet**
@@ -51,7 +51,7 @@ This task is the normal starting point for a typical lift and shift migration as
 
 
 ## Task 4 - Select a replication goal
-1. Once the deployment has succeeded, click on **Go to Resource** or in the search bar type in **MyVault** and select it.
+1. Once the vault deployment has succeeded, click on **Go to Resource** or in the search bar type in **MyVault** and select it.
 2. In the **Getting Started** Menu, click **Site Recovery** > **Prepare Infrastructure**. 
 3. In **Protection goal**, set the following: 
     * Where are your machines located?: **Azure** 
@@ -71,14 +71,14 @@ This task is the normal starting point for a typical lift and shift migration as
 7.	You may notice that Vaildating takes a few moments to process.  The fabric is ensuring that resources in your target region can be created and there’s no conflicts.
 
 
-## Task 5 - Track Replication
+## Task 6 - Track Replication
 1. Once Azure has built the core components replication will begin.  On the alert button (the bell) click on **Enabling replication for 1 vm(s)**.
 2.	Notice the steps as they occur in real time.  The longest step in the process is going to be **Enable replication**.  Select that item and observe the series of steps taking place. IR, or Initial Replication, the time it takes the VM to be copied from source to target.  Notice the Status of IR.  
 2.	Since it may take 30 minutes to replicate the VM, now may be an appropriate time to take a break or come back to the lab at a later time.
 3.	You can check percentage complete of replication by **Virtual Machines > IIS > Operations > Disaster Recovery**.  You may notice status sits at 0% synchronized for some time and then report upwards of 87% complete on next refresh.
 
 
-## Task 6 - Run a Test Failover 
+## Task 7 - Run a Test Failover 
 A test failover executes a failover but does not make the secondary or migrated VM active.  A drill validates your replication strategy without data loss or downtime and doesn't affect your production environment.
 1.	Click the **Test Failover** icon.
 2.	In Test Failover, select Latest (lowest RPO) as the recovery point to use for the failover.  Note the following:
@@ -92,7 +92,7 @@ A test failover executes a failover but does not make the secondary or migrated 
 6.	To delete the VMs that were created during the test failover, select **IIS-test** from **Virtual Machines**, select **Disaster recovery** under  **Operations**, and then choose **Cleanup test failover**. In Notes, record and save any observations associated with the test failover. Click the box for **Testing is complete** and click **Ok**.
 If you don’t delete the failover VM, the VM will continue to run and increase your Azure consumption.
 
- ## Task 6 - Switch over to the migrated VM
+ ## Task 8 - Switch over to the migrated VM
  Once you have validated the migrated VM by performing a test failover, your next step will be to ensure that the VM works as planned.  In this lab you will shutdown the source VM and then surf to the migrated VM to ensure IIS still renders.
 
  1.  
