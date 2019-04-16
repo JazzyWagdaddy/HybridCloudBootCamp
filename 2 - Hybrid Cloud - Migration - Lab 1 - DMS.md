@@ -98,7 +98,7 @@ Before you create a migration project in DMA, be sure that you have already prov
     * Under **Compute + storage** click *Configure database*, choose **Basic**, and then click **Apply**.
 4. Select **Review + Create** and the **Create**.
 5. Once you database server is created, click on the server in the deployment tab.
-6. In the Azure Portal, click on **MySampleDatabase** and copy the FQDN URL to the database server, such as abc1234.database.windows.net.
+6. In the Azure Portal, click on **MySampleDatabase** and copy the FQDN to the database server, such as abc1234.database.windows.net.
 
 
 
