@@ -79,8 +79,8 @@ Complete the previous steps but use the following information:
 * Region: *Choose a consistent supported Region*
 * Size: Change to **B2ms**
 * Username: pick a username
-* Password: pick a complex password
-* Confirm Password: pick a complex password
+* Password: `Complex.Password`
+* Confirm Password: `Complex.Password`
 * Public inbound ports: Open RDP, 3389
 * Select **Next:Disks >**
 * Click **Next: Networking >**
@@ -91,6 +91,7 @@ Complete the previous steps but use the following information:
 * Once validation passes click **Create**.
 
 #### Create the third VM
+*Only build a third VM if you are going to do the optional lab on hub and spoke architecture.*
 Complete the previous steps but use the following information:
 * Resource Group: MyVMs
 * Name: **VM3**

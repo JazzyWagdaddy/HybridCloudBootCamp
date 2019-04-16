@@ -50,7 +50,8 @@ We are creating a small VM to be used later to host the Azure AD Connector servi
     * Virtual machine name: **ADConnect**
     * Size: Choose anything with at least 2 vCPUs and 7GB RAM such as a **DS2_v2**
     * Username: **ADAdmin**
-    * Password: *Complex.Password*
+    * Password: `Complex.Password`
+    * Confirm Password: `Complex.Password`
     * Use existing Resource Group: **AZDCRG**
     * Public inbound ports: **Allow selected ports**
     * Select inbound ports: **RDP (3389)** 
@@ -75,6 +76,7 @@ Configure DNS
 11.	Select the radio button for **Use the following DNS Server addresses:** and Set the DNS server to **10.0.0.4** and click **OK** and then **Close**.
 12.	You will lose connection to the ADConnect VM, this is expected. Once you are back at the Microsoft Azure Portal, click **Restart** to restart the ADConnect VM.
 13.	Once the VM is successfully restarted, connect to the ADConnect VM and logon as ADAdmin.
+
 ### Join the Domain 
 1.	Within **Server Manager**, click on **Local Server**.
 15.	Click on **WORKGROUP**, then **Change** to rename this computer or join it to a domain.
