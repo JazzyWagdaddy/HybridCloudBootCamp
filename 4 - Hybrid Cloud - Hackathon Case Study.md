@@ -24,7 +24,7 @@ One of Contoso Coffee's main competitors recently had a data breach after their 
 ## Small Beans Infrastructure
 Small Beans is a startup company that was born in the cloud.  They have no IT infrastructure on-premises other than a few printers, a wireless access point, and a router that connects their  small office to the Internet.  Their employees are highly mobile and primarily work from the field or their home office.
 
-Employees at Small Beans are incredibly happy with the performance and stability of their netwok.  Outages have been far and few between.  The systems always seems to run and run well whenever they need it.
+Employees at Small Beans are incredibly happy with the performance and stability of their network.  Outages have been far and few between.  The systems always seems to run and run well whenever they need it.
 
 ## Small Beans Applications
 The primary application that runs the business for Small Beans is a web application named Caffeine that both employees and customers access via a web browser.
