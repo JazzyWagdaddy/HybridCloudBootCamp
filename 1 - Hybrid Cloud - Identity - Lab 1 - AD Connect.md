@@ -1,4 +1,4 @@
-# Hybrid Identity Hands-On Lab
+# Azure Identity Lab #1
 
 ## Before you Begin
 If you are using a Microsoft Azure subscription that was provided to you by Microsoft, you are limited to a specific set of Microsoft Azure regions that you can use. Please use either the **East US, South Central US, West Europe, Southeast Asia, West US 2, or West Central US locations**.
@@ -120,7 +120,7 @@ Close Internet Explorer.
 4.	On the **Connect to AD DS screen**, enter the Active Directory Domain Services domain administrator credentials. This would be the account you created in the template. Click **Next** and confirm the credential are validated.  
     * If you get an error about the current security context is not associated with an Active Directory domain or forest, you more than likely didn’t logon with a domain account but rather a local account.  You can verify this by opening a command prompt and entering **whoami**.  Logout and login with a domain account and then restart at step 1 in this section.
 5.	On the **Azure AD sign-in configuration** screen, select the checkbox for **Continue without any verified domains** and click **Next**.
-    * Since this is a temporary lab environment we are not going use a validated custom domain.
+    * Since this is a temporary lab environment, we are not going use a validated custom domain.
 6.	On the **Ready to Configure** screen click **Install**.
 7.	It may take 5-10 minutes for Azure AD Connect to complete installation. Read the **Configuration Complete** screen and then click **Exit**.
 8. Minimize your RDP window.
@@ -129,7 +129,7 @@ Close Internet Explorer.
 1.	Switch to the Azure portal and examine your Azure AD Directory by clicking on the directory and choosing All users.   You may need to switch directories from the Default Directory to your newly created directory.
 2. Note that you should see accounts sourced from Active Directory that have synchronized to Azure Active Directory (e.g. On Prem).
 
-### Congratulations!  Your are now synchronizing Active Directory to Azure Active Directory!!
+### Congratulations!  You are now synchronizing Active Directory to Azure Active Directory!!
  
 
 

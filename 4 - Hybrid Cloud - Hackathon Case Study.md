@@ -1,6 +1,5 @@
 # Azure Hackathon Case Study
 
-
 ## The Contoso Coffee Story
 Contoso Coffee is a rapidly growing company that operates in the US as well as several  international markets within the EU. They have built their business from the ground up and recently purchased a small startup company named Small Beans that resides in western US states where Contoso Coffee previously had no presence. They have staff that are mobile, working with their customers at their locations as well as with suppliers in remote locations around the world.
 
