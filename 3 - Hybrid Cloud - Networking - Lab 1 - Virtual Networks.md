@@ -22,7 +22,7 @@ Each lab is a unique file on GitHub
 
   
 ## Task 1 - Virtual Networks
-In this lab you are going top create multiple virtual networks each with it's own virtual machine and subnet and then test connectivity across subnets and vnets.
+In this lab you are going to create multiple virtual networks each with its own virtual machine and subnet and then test connectivity across subnets and vnets.
 ### Create three virtual networks
 1.	Log in to the Azure portal at https://portal.azure.com and 	click on **+Create a resource**  on the upper left corner of the Azure portal.
 2.	Select **Networking**, and then select **Virtual network**.
@@ -66,7 +66,7 @@ Repeat the steps above for vNet3:
     * Public inbound ports:  Open RDP, 3389
     * Select **Next:Disks**
 4.	Click **Next: Networking**.
-5.	Set the virtual network to **vNet01** and then select **Next: Management >**.
+5.	Set the virtual network to **vNet1** and then select **Next: Management >**.
 6.	Under Diagnostic storage account click **Create new** and enter  *yourinitials* *shortdate* and ensure the name resolves (e.g. abc1009), click **OK**, and then click **Next: Guest config >**.
 7.	Review the items and then click **Next: Tags >**.
 8.	Review the items and then click **Next: Review + create .**.
@@ -84,7 +84,7 @@ Complete the previous steps but use the following information:
 * Public inbound ports: Open RDP, 3389
 * Select **Next:Disks >**
 * Click **Next: Networking >**
-* Set the virtual network to vNet2 and then select **Next: Management >**
+* Set the virtual network to **vNet2** and then select **Next: Management >**
 * Under Diagnostic storage account use the previously created Diagnostics storage account and then click **Next: Guest config >**.
 * Review the items and then click **Next: Tags >**.
 * Review the items and then click **Next: Review + create >**.
@@ -103,7 +103,7 @@ Complete the previous steps but use the following information:
 * Public inbound ports: Open RDP
 * Select **Next:Disks >**
 * Click **Next: Networking >**
-* Set the virtual network to vNet3 and then select **Next: Management >**
+* Set the virtual network to **vNet3** and then select **Next: Management >**
 * Under Diagnostic storage account use the previously created Diagnostics storage account and then click **Next: Guest config >**.
 * Review the items and then click **Next: Tags >**.
 * Review the items and then click **Next: Review + create >**.
