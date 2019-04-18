@@ -21,7 +21,7 @@ You will complete four different labs on the following core elements of Azure Ne
 Each lab is a unique file on GitHub 
 
   
-## Lab 1 - Virtual Networks
+## Task 1 - Virtual Networks
 In this lab you are going top create multiple virtual networks each with it's own virtual machine and subnet and then test connectivity across subnets and vnets.
 ### Create three virtual networks
 1.	Log in to the Azure portal at https://portal.azure.com and 	click on **+Create a resource**  on the upper left corner of the Azure portal.
@@ -51,7 +51,7 @@ Repeat the steps above for vNet3:
 * Subnet address range: **10.3.3.0/24**
 
  
-### Create three virtual machines
+## Task 2 - Create three virtual machines
 
 1.	Select **+ Create a resource** found on the upper left corner of the Azure portal.
 2.	Select **Compute** and then select **Windows Server 2016 Datacenter**.
@@ -72,15 +72,15 @@ Repeat the steps above for vNet3:
 8.	Review the items and then click **Next: Review + create .**.
 9.	Once validation passes click **Create**.
 
-#### Create the second VM
+## Task 3 - Create the second VM
 Complete the previous steps but use the following information:
 1.* Resource Group: MyVMs
 * Name: **VM2**
 * Region: *Choose a consistent supported Region*
 * Size: Change to **B2ms**
 * Username: pick a username
-* Password: pick a complex password
-* Confirm Password: pick a complex password
+* Password: `Complex.Password`
+* Confirm Password: `Complex.Password`
 * Public inbound ports: Open RDP, 3389
 * Select **Next:Disks >**
 * Click **Next: Networking >**
@@ -90,7 +90,8 @@ Complete the previous steps but use the following information:
 * Review the items and then click **Next: Review + create >**.
 * Once validation passes click **Create**.
 
-#### Create the third VM
+## Task 4 - Create the third VM
+*Only build a third VM if you are going to do the optional lab on hub and spoke architecture.*
 Complete the previous steps but use the following information:
 * Resource Group: MyVMs
 * Name: **VM3**
@@ -110,37 +111,27 @@ Complete the previous steps but use the following information:
 
 You now have three virtuals machines each in their own subnet and virtual network. Let's validate that.
 
-1. From the Azure Dashboard, select **All services**.
-2. Under **Networking**, select the following:
-    * Application gateways
-    * Network security groups
-3. Under **Management + Governance** select the following:
-    * Network Watcher
-4. Click on **Monitor** from the left hand pane.
-5. Under **Insights** select **Network**, then under **Monitoring** choose **Topology**.
-6. User **Resource Group** select **MyVNets**.  In a moment a conceptual network diagram should be generated showing all three vNets and subnets.
+1. Click on **Monitor** from the left hand pane.
+2. Under **Insights** select **Network**, then under **Monitoring** choose **Topology**.
+3. User **Resource Group** select **MyVNets**.  In a moment a conceptual network diagram should be generated showing all three vNets and subnets.  Notice that there is no link between vNet1, vNet2, or vNet3.
 
 
-### Connect to a VM and test connectivity
+## Task 5 - Connect to a VM and test connectivity
 Before you begin this section, obtain the private and public IP addresses of VM1, VM2, and VM3.
 
-1.	At the top of the Azure portal, enter **VM1**. When VM1 appears in the search results, select it. Select the **Connect** button.
- 
+1.	At the top of the Azure portal, enter **VM1**. When VM1 appears in the search results, select it, and the select the **Connect** button.
 2.	After selecting the Connect button, click on **Download RDP file**. 
 3.	If prompted, select **Connect**. Enter the user name and password you specified when creating the VM. You may need to select **More choices**, then **Use a different account**, to specify the credentials you entered when you created the VM.
 4.	Select **OK**.
-5.	Click Yes on the Networks blade.
-6.	From PowerShell, enter *ping vm2*. Ping fails, why is that? **Each virtual network is isolated from other virtual networks.** 
+5.	Click **Yes** on the Networks blade.
+6.	From PowerShell, enter *ping vm2*. Ping fails, why is that? **Each virtual network is isolated from other virtual networks and there is no name resolution established.** 
 7. To allow VM1 to ping other VMs in a later step, enter the following command from PowerShell, which allows ICMP inbound through the Windows firewall:
 _New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4_.
 8. Repeat these steps (connect to the VM and issue the PowerShell command) for VM2 and VM3.
 
-
-
-### Connect virtual networks with virtual network peering using the Azure portal
+## Task 6 - Connect virtual networks with virtual network peering using the Azure portal
 You can connect virtual networks to each other with virtual network peering. These virtual networks can be in the same region or different regions (also known as Global VNet peering). Once virtual networks are peered, resources in both virtual networks are able to communicate with each other, with the same latency and bandwidth as if the resources were in the same virtual network. 
 
-#### Peer virtual networks
 1. In the Search box at the top of the Azure portal, begin typing **vNet1**. When vNet1 appears in the search results, select it.
 2. Select **SETTINGS** then **Peerings**, and then select **+ Add**.
 3. Enter, or select, the following information, accept the defaults for the remaining settings, and then select **OK**.
@@ -158,17 +149,16 @@ Complete steps 2-3 again, with the following changes, and then select **OK**:
 * Configure virtual network access settings: **Enabled**
 * Configure forwarded traffic settings: **Disabled**
 
-Peering status - If you don't see the status, refresh your browser.  Notice the status is *Connected*.  
- Azure also changed the peering status for the vNet1-vNet2 peering from Initiated to Connected. Virtual network peering is not fully established until the peering status for both virtual networks is Connected.
+Peering status - If you don't see the status, refresh your browser.  Notice the status is *Connected*.  Azure also changed the peering status for the vNet1-vNet2 peering from **Initiated** to **Connected**. Virtual network peering is not fully established until the peering status for both virtual networks is **Connected**.
 
- ### Test connectivity
+ ## Task 7 -  Test connectivity
  1. At the top of the Azure portal, enter **VM1**. When VM1 appears in the search results, select it. Select the **Connect** button.
  2. After selecting the Connect button, click on **Download RDP file**.
  3. If prompted, select **Connect**. Enter the user name and password you specified when creating the VM. You may need to select More choices, then Use a different account, to specify the credentials you entered when you created the VM. Select **OK**.
  4. Click **Yes** on the Networks blade.
-5. From PowerShell, enter *ping vm2*. Ping succeeds, why is that? 
+5. From PowerShell, and then ping VM2 by ip address. Ping succeeds, why is that? 
 
 Let's examine our network topology now that we have peering enabled.
 1.  Click on **Monitor** from the left hand pane.
 2. Under **Insights** select **Network**, then under **Monitoring** choose **Topology**.
-3. User **Resource Group** select **MyVNets**.  In a moment a conceptual network diagram should be generated showing all three vNets and subnets including the new peerings between vNet1 and vNet2.
+3. User **Resource Group** select **MyVNets**.  In a moment a conceptual network diagram should be generated showing all your vNets and subnets including the new peerings between vNet1 and vNet2.
