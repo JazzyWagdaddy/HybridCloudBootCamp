@@ -22,10 +22,10 @@ You will complete four different labs on the following core elements of Azure Ne
 
 Each lab is a unique file on GitHub 
 
-  
-## Task 1 - Virtual Networks
 In this lab you are going to create multiple virtual networks each with its own virtual machine and subnet and then test connectivity across subnets and vnets.
-### Create three virtual networks
+  
+## Task 1 - Create three Virtual Networks
+
 1.	Log in to the Azure portal at https://portal.azure.com and 	click on **+Create a resource**  on the upper left corner of the Azure portal.
 2.	Select **Networking**, and then select **Virtual network**.
 3.	Enter or select the following information, accept the defaults for the remaining settings, and then select **Create**:
@@ -76,7 +76,8 @@ Repeat the steps above for vNet3:
 
 ## Task 3 - Create the second VM
 Complete the previous steps but use the following information:
-1.* Resource Group: MyVMs
+
+* Resource Group: MyVMs
 * Name: **VM2**
 * Region: *Choose a consistent supported Region*
 * Size: Change to **B2ms**

@@ -5,7 +5,8 @@ If you are using a Microsoft Azure subscription that was provided to you by Micr
 Otherwise you will receive an  error in the portal if you select an unsupported region and attempt to build anything in Microsoft Azure.
  
 ## Task 1 - Setup an IaaS Domain Controller via JSON Template
-We will setup an IaaS VM with Active Directory via a JSON template from GitHub.  Although this domain controller is the in the cloud, we’ll use it to simulate an on-prem domain controller.
+We will setup an IaaS VM with Active Directory via a JSON template from GitHub.  Although this domain controller is in the cloud, we will use it to simulate an on-prem domain controller.
+
 Install the domain controller
 1.	Logon to your Azure subscription.
 2.	Surf to https://azure.microsoft.com/en-us/resources/templates/active-directory-new-domain/ 
@@ -130,6 +131,3 @@ Close Internet Explorer.
 2. Note that you should see accounts sourced from Active Directory that have synchronized to Azure Active Directory (e.g. On Prem).
 
 ### Congratulations!  You are now synchronizing Active Directory to Azure Active Directory!!
- 
-
-

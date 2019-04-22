@@ -58,7 +58,7 @@ Before you can complete this section, you will need to map a drive to an Azure F
 8. Click **Finish** on the Summary screen.
 9. Click **Close** on the Results screen
 
-## Task 6 - Install the Data Migration Assistant
+## Task 6 - Install the Data Migration Assistant (DMA)
 1. From the SQLVM, download and install the [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 or later using the defaults.
 2. On the Completed screen, check the box for **Launch Microsoft Data Migration Assistant** and click **Finish**.
 
@@ -86,7 +86,7 @@ Before you create a migration project in DMA, be sure that you have already prov
 
 1. Select **Create a resource** in the upper left-hand corner of the Azure portal.
 2. Select **Databases** and then select **SQL Database**.
-3. In the **Create SQL Database form**, type or select the following values: 
+3. In the **Create SQL Database** form, type or select the following values: 
     * Resource group: Select *Create new*, type **MySQLDBs**. 
     * Database name: Enter **mySampleDatabase**.
     * Server:  
@@ -103,11 +103,11 @@ Before you create a migration project in DMA, be sure that you have already prov
 
 
 ## Task 9 - Migrate the sample schema
-After you're comfortable with the assessment and satisfied that the selected database is a viable candidate for migration to a single database or pooled database in Azure SQL Database, use DMA to migrate the schema to Azure SQL Database.
+After you are comfortable with the assessment and satisfied that the selected database is a viable candidate for migration to a single database or pooled database in Azure SQL Database, use DMA to migrate the schema to Azure SQL Database.
 
-1. In the Data Migration Assistant, select the **New (+) **icon, and then under Project type, select **Migration**.
+1. In the Data Migration Assistant, select the **New (+)** icon, and then under Project type, select **Migration**.
 2. Specify **SQLMIG** as the project name, in the Source server type text box, select **SQL Server**, and then in the Target server type text box, select **Azure SQL Database**.  Click **Create**.
-3. In DMA, specify the source connection details for your SQL Server and select Connect.  This is the FQDN name you copied in Task 9.
+3. In DMA, specify the source connection details for your SQL Server and select Connect.  This is the FQDN name you copied in Task 8.
 4.  The SampleData database should be listed.  Uncheck **Assess database before migration?** and click Next.
 5. On the Select Target tab, enter the floowing and click Next:
     * Server name: Enter your (Azure) SQL Server name. 
@@ -118,8 +118,8 @@ After you're comfortable with the assessment and satisfied that the selected dat
 6. Select **MySampleDB** when it appears and click **Next**.
 7. On the **Select Objects tab** click **Generate SQL Script**.
 8. On the **Script & deploy schema tab** review the script and click **Deploy schema**.  Once complete, and that tasks should be fast, click Migrate Data.
-9. On the Slect tables tab, ensure that the row count is 38,803 and click **Start data migration**.
-10. THe migration should take less than 30 seconds.  Review the tab for deployment information on warnings, failures, etc.  
+9. On the Select tables tab, ensure that the row count is 38,803 and click **Start data migration**.
+10. The migration should take less than 30 seconds.  Review the tab for deployment information on warnings, failures, etc.  
 
 Congratulations, you have just migrated your first database to the cloud!
 
@@ -128,7 +128,7 @@ Let's make sure that your data got migrated and looks right.  We're going to con
 
 1. Switch to the **Microsoft SQL Server Management Studio** application.
 2. Click on **File** then **Connection Object Explorer**.
-3. Enter the following in the Connect to Server form and click COnnect:
+3. Enter the following in the **Connect to Server** form and click Connect:
     *  Server name: Enter your (Azure) SQL Server name. (e.g. `abc123.database.windows.net`)
     * Authentication type: SQL Server Authentication
     * In the Username box, type the name of a valid SQL login from the previous steps.

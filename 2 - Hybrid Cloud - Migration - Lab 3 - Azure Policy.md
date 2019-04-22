@@ -1,9 +1,11 @@
 # Azure Migration Lab #3
 
 ## Azure Policy
-Azure Policy helps you manage and prevent IT issues with policy definitions that enforce rules and effects for your resources. When you use Azure Policy, resources stay compliant with your corporate standards and service level agreements.
+Azure Policy helps you manage and prevent IT issues with policy definitions that enforce rules and effects for your resources.
 
-Understanding how to create and manage policies in Azure is important for staying compliant with your corporate standards and service level agreements. In this tutorial, you learn to use Azure Policy to do some of the more common tasks related to creating, assigning, and managing policies across your organization, such as:
+Understanding how to create and manage policies in Azure is important for staying compliant with your corporate standards and service level agreements.
+
+In this tutorial, you learn to use Azure Policy to do some of the more common tasks related to creating, assigning, and managing policies across your organization, such as:
 * Assign a policy to enforce a condition for resources you create in the future
 * Create and assign an initiative definition to track compliance for multiple resources
 * Resolve a non-compliant or denied resource
@@ -23,7 +25,7 @@ Understanding how to create and manage policies in Azure is important for stayin
 With an initiative definition, you can group several policy definitions to achieve one overarching goal. An initiative evaluates resources within scope of the assignment for compliance to the included policies. 
 
 #### Create an initiative definition
-1. Select **Definitions** under Authoring in the left side of the Azure Policy page.
+1. Select **Definitions** under Authoring on the left side of the Azure Policy page.
 2. Select **+ Initiative Definition** at the top of the page to open the Initiative definition page.
 3. Enter **Tag Enforcement** as the Name and Description of the initiative.
 4. For Category, choose *Create new*, and enter **MyFirstInitiative**.
