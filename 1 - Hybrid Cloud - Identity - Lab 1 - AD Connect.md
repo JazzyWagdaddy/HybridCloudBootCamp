@@ -1,11 +1,12 @@
-# Hybrid Identity Hands-On Lab
+# Azure Identity Lab #1
 
 ## Before you Begin
 If you are using a Microsoft Azure subscription that was provided to you by Microsoft, you are limited to a specific set of Microsoft Azure regions that you can use. Please use either the **East US, South Central US, West Europe, Southeast Asia, West US 2, or West Central US locations**.
 Otherwise you will receive an  error in the portal if you select an unsupported region and attempt to build anything in Microsoft Azure.
  
 ## Task 1 - Setup an IaaS Domain Controller via JSON Template
-We will setup an IaaS VM with Active Directory via a JSON template from GitHub.  Although this domain controller is the in the cloud, we’ll use it to simulate an on-prem domain controller.
+We will setup an IaaS VM with Active Directory via a JSON template from GitHub.  Although this domain controller is in the cloud, we will use it to simulate an on-prem domain controller.
+
 Install the domain controller
 1.	Logon to your Azure subscription.
 2.	Surf to https://azure.microsoft.com/en-us/resources/templates/active-directory-new-domain/ 
@@ -74,11 +75,7 @@ Configure DNS
 12.	You will lose connection to the ADConnect VM, this is expected. Once you are back at the Microsoft Azure Portal, click **Restart** to restart the ADConnect VM.
 13.	Once the VM is successfully restarted, connect to the ADConnect VM and logon as ADAdmin.
 
-<<<<<<< HEAD
-### Join the Domain 
-=======
 ## Task 5 - Join the Domain 
->>>>>>> ef8a7563e13b3130865de08e25d9666d7565cf13
 1.	Within **Server Manager**, click on **Local Server**.
 2.	Click on **WORKGROUP**, then **Change** to rename this computer or join it to a domain.
 3.	Click the radio button for **Domain**, enter your fully-qualified domain name, such as mydomainname.com, and click **OK**.
@@ -124,7 +121,7 @@ Close Internet Explorer.
 4.	On the **Connect to AD DS screen**, enter the Active Directory Domain Services domain administrator credentials. This would be the account you created in the template. Click **Next** and confirm the credential are validated.  
     * If you get an error about the current security context is not associated with an Active Directory domain or forest, you more than likely didn’t logon with a domain account but rather a local account.  You can verify this by opening a command prompt and entering **whoami**.  Logout and login with a domain account and then restart at step 1 in this section.
 5.	On the **Azure AD sign-in configuration** screen, select the checkbox for **Continue without any verified domains** and click **Next**.
-    * Since this is a temporary lab environment we are not going use a validated custom domain.
+    * Since this is a temporary lab environment, we are not going use a validated custom domain.
 6.	On the **Ready to Configure** screen click **Install**.
 7.	It may take 5-10 minutes for Azure AD Connect to complete installation. Read the **Configuration Complete** screen and then click **Exit**.
 8. Minimize your RDP window.
@@ -133,7 +130,4 @@ Close Internet Explorer.
 1.	Switch to the Azure portal and examine your Azure AD Directory by clicking on the directory and choosing All users.   You may need to switch directories from the Default Directory to your newly created directory.
 2. Note that you should see accounts sourced from Active Directory that have synchronized to Azure Active Directory (e.g. On Prem).
 
-### Congratulations!  Your are now synchronizing Active Directory to Azure Active Directory!!
- 
-
-
+### Congratulations!  You are now synchronizing Active Directory to Azure Active Directory!!

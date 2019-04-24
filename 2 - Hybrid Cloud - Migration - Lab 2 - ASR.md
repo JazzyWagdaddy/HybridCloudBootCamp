@@ -1,6 +1,6 @@
 # Azure Migration Lab #2
+
 ## Azure Site Recovery for Migration  
- 
 In this lab you will create a VM in Azure to simulate a source VM running in either VMware or Hyper-V on the ground.  We will then replicate (aka migrate) the VM to Azure.
 
 Please note that using this approach represents `the fastest way` to migrate a VM to Azure and should not be seen as the usual, customary amount of time it takes to perform a migration to Azure. 
@@ -30,11 +30,11 @@ If the command is successful (TcpTestSucceeded=True) then continue with the foll
 * Map the z: to an Azure files share:
 
     `net use Z: \\wagsazurefiles.file.core.windows.net\buildiis /persistent:Yes`
-* Copy the file to your local computer and the proceed to step 6.
+* Copy the file to your local computer
 
     `copy z:\build-iis-vm.ps1 c:\users\yourprofile\downloads`
 
-
+* Proceed to step 6.
 
 4. Open the GitHub repository for the lab.
 5. Copy the build-iis-vm.ps1 to your local computer.  
@@ -79,7 +79,7 @@ This task is the normal starting point for a typical lift and shift migration as
 3.	In **Configure disaster recovery** > **Target region** select the target region to which you'll replicate and where you create the network resources in Task 2, which should be the Central US. Click **Next: Advanced settings**.
 4. Under Advanced settings, set the following and click **Next: Review + Start Replication**.
     * VM resource group: **MigrationvNets**
-    * Virtual network" **MigrationvNet**
+    * Virtual network: **MigrationvNet**
     * Availability: **Availability set**
 5. Click on **Review + Start replication**.
 6. Review the settings and click **Start replication**. This starts a job to enable replication (aka migration) for the VM.

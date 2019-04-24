@@ -1,4 +1,6 @@
-# Lab 4 - Network Watcher
+# Azure Networking Lab #4
+
+## Network Watcher
 To test network communication with Network Watcher, first enable a network watcher in at least one Azure region, and then use Network Watcher's IP flow verify capability.
 ## Enable network watcher
 1)	In the portal, select **All services**. In the Filter box, enter **Network Watcher**. When Network Watcher appears in the results, select it.
